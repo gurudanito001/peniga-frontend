@@ -36,7 +36,7 @@ const ResetPasswordForm = () =>{
 
 
         <div className="flex flex-col mt-7 max-w-lg">
-          <button className="btn btn-block bg-blue-800 hover:bg-blue-800/75 sm:btn-lg sm:h-16 mt-4 text-neutral-300">Reset Password</button>
+          <button className="btn btn-block btn-accent text-accent-content sm:btn-lg sm:h-16 mt-4">Reset Password</button>
         </div>
       </form>
   )

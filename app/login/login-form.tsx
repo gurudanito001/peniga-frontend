@@ -11,7 +11,7 @@ const LoginForm = () =>{
   const handleTogglePassword = () =>{
     setShowPassword( prevState => !prevState)
   }
-  
+
   return(
     <form className="w-full min-h-full max-h-fit p-5 py-14 md:p-14 flex flex-col gap-4 backdrop-blur-2xl bg-base-300/75 text-neutral-300 backdrop-brightness-150 max-w-xl m-auto">
         <h2 className=" text-3xl md:text-4xl flex flex-col lg:flex-row gap-5 max-w-lg mb-5">
@@ -44,7 +44,7 @@ const LoginForm = () =>{
         </label> */}
 
         <div className="flex flex-col  mt-7 max-w-lg">
-          <button className="btn btn-block bg-indigo-600 hover:bg-indigo-600/75 sm:btn-lg sm:h-16 text-neutral-300">Login</button>
+          <button className="btn btn-block btn-accent text-accent-content sm:btn-lg sm:h-16">Login</button>
           <span className="block text-center"> Don&apos;t have an account<Link className="btn btn-link text-primary" href="/sign-up">Sign up</Link></span>
         </div>
       </form>

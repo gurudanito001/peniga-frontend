@@ -21,7 +21,7 @@ const SendOtpForm = () =>{
 
 
         <div className="flex flex-col mt-7 max-w-lg">
-          <button className="btn btn-block bg-blue-800 hover:bg-blue-800/75 sm:btn-lg sm:h-16 mt-4 text-neutral-300">Send OTP</button>
+          <button className="btn btn-block btn-accent sm:btn-lg sm:h-16 mt-4 text-accent-content">Send OTP</button>
           <span className="block text-center">Back to<Link className="btn btn-link text-primary" href="/login">Login</Link></span>
 
         </div>
