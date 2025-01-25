@@ -18,7 +18,7 @@ const HeroSection = () =>{
         
       </div>
       <div className="hidden xl:flex items-center justify-center">
-        <Image src="/images/contract-vector.png" className="w-full" alt="contract vector image" width={400} height={600}  />
+        <Image src="/images/contract-vector.png" className="w-full" alt="contract vector image" width={600} height={600}  />
       </div>
     </section>
   )

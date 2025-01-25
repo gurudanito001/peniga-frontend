@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Peniga Escrow Services",
+  title: "Peniga | Forgot Password",
   description: "Ensuring Safety and Security of Online Trade",
 };
 
