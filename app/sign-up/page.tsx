@@ -1,20 +1,19 @@
-import Image from "next/image"
 import Navbar from "../(landingPage)/navbar";
 import SignupForm from "./signup-form";
+import Footer from "../(landingPage)/footer";
 
 
 const Signup = () => {
 
   return (
-    <main className="flex flex-col w-full h-screen backdrop-blur-2xl bg-base-100/75 text-neutral-400 backdrop-brightness-150">
-    <Navbar showLinks={false} />
-    <section className=" grid lg:grid-cols-2 xl:rounded-3xl w-full xl:max-w-6xl  backdrop-blur-2xl bg-base-100/5 text-neutral-400 backdrop-brightness-150 m-auto lg:overflow-clip h-full lg:h-auto ">
-      <div className="hidden lg:flex items-center justify-center w-full bg-indigo-200">
-        <Image src="/images/signup.png" className="w-full m-auto" alt="contract vector image" width={600} height={600} />
-      </div>
-      
+    <main className="">
+      <div className="grid-background">
+      <Navbar/>
       <SignupForm />
-    </section>
+      <div className="fading-effect"></div>
+      </div>
+      <Footer/>
+   
     </main>
   )
 }

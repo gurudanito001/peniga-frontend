@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AU+VIC+Guides&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AU+VIC+Guides&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,4 +27,30 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3{
+  font-family: "Instrument Sans";
+}
+
+p, a, li, button, label, input{
+  font-family: "Figtree";
+}
+
+.grid-background{
+  
+  background-color: #F5F5F5;
+  background-image:  linear-gradient(to right, rgba(224, 224, 224, 0.4) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(224, 224, 224, 0.4) 1px, transparent 1px);
+  background-size: 40px 40px;
+  
+}
+
+.fading-effect{
+ 
+  bottom: 0;
+  width: 100%;
+  height: 100px; /* Adjust this height based on how much fade you want */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
+  pointer-events: none; /* Ensures it doesn’t block clicks */
 }
