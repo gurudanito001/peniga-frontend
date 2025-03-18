@@ -2,19 +2,22 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Image from "next/image";
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 items-center justify-center px-4 md:px-8 max-w-7xl mx-auto gap-6 mt-10">
+    <div className="grid grid-cols-1 lg:grid-cols-5 items-center justify-center px-4 md:px-12 max-w-7xl mx-auto gap-4 mt-10">
       {/* Left Side - Image (Hidden on Mobile) */}
       <div className="hidden lg:flex col-span-3 h-full">
-        <img
+        <Image
+        width={700}
+        height={700}
           src="/images/Frame 60.svg"
           alt="Sign Up"
-          className="w-full h-full object-cover rounded-lg"
+          className=" object-cover rounded-lg"
         />
       </div>
 

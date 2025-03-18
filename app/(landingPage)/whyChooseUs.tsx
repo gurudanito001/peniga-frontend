@@ -13,7 +13,7 @@ const WhyChooseUs = () => {
         Building Trust, Ensuring Accountability
         </h1>
         <p className="text-[#272727] text-sm max-w-md  mt-2">
-        At Peniga, we've created a secure and reliable bridge between buyers and sellers, ensuring both parties stay accountable throughout every transaction.
+        At Peniga, we&apos;ve created a secure and reliable bridge between buyers and sellers, ensuring both parties stay accountable throughout every transaction.
         </p>
 
         <button className="px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition mt-4">

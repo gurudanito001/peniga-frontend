@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const HowItWorks = () => {
     return (
@@ -30,18 +31,22 @@ const HowItWorks = () => {
                         Clearly outline the details of your transaction by specifying the product or service and setting the agreement terms.
                     </p>
                 </div>
-                <div className="relative bg-[#C55938] text-[#FFFFF2] px-8 py-10 rounded-2xl overflow-hidden col-span-7 flex flex-col justify-center text-left pl-16 pr-6">
+                <div className="relative bg-[#C55938] text-[#FFFFF2] px-8 py-12 rounded-2xl overflow-hidden col-span-7 flex flex-col justify-center text-left pl-16 pr-6">
                     {/* Top Right Curve */}
-                    <img
+                    <Image
+                    width={70}
+                    height={70}
                         src="/images/Group 19.svg"
-                        className="absolute top-[-16px] right-[-56px] md:right-[-32px] w-28 h-28 opacity-50 rotate-[90deg]"
+                        className="absolute top-[-32px] right-[-56px] md:right-[-48px] opacity-50 rotate-[90deg] lg:right-0"
                         alt="Curved Pattern"
                     />
 
                     {/* Left Curve */}
-                    <img
+                    <Image
+                    width={70}
+                    height={70}
                         src="/images/Group 19.svg"
-                        className="absolute bottom-0 top-36 lg:top-16 w-28 h-28 opacity-50 lg:left-[-20px] left-[-44px] rotate-[270deg] md:rotate-0 "
+                        className="absolute bottom-0 top-36 lg:top-16 opacity-50 lg:left-[-6px] md:left-[-48px] rotate-[270deg] lg:rotate-0 left-[-36px]"
                         alt="Curved Pattern"
                     />
                      <div className="">
@@ -54,18 +59,22 @@ const HowItWorks = () => {
                 </div>
 
                 {/* Row 2 */}
-                <div className=" bg-[#025253] text-[#FFFFF2] px-8 py-10 rounded-2xl overflow-hidden relative col-span-7 flex flex-col justify-center text-left pl-16 pr-6">
+                <div className=" bg-[#025253] text-[#FFFFF2] px-8 py-12 rounded-2xl overflow-hidden relative col-span-7 flex flex-col justify-center text-left pl-16 pr-6">
                     {/* Top Right Curve */}
-                    <img
+                    <Image
+                    width={70}
+                    height={70}
                         src="/images/Group 19 (1).svg"
-                        className="absolute top-[-16px] lg:top-0 bottom-0 right-[-56px] md:right-[-20px] lg:translate-y-[100%] lg:rotate-[270deg] w-28 h-28 opacity-50 rotate-[90deg]"
+                        className="absolute top-[-44px] lg:top-12 bottom-0 right-[-56px] lg:right-[0px] lg:translate-y-[40%] lg:rotate-[270deg] opacity-50 rotate-[90deg]"
                         alt="Curved Pattern"
                     />
 
                     {/* Left Curve */}
-                    <img
+                    <Image
+                    width={60}
+                    height={60}
                         src="/images/Group 19 (1).svg"
-                        className="absolute bottom-0 top-36 lg:top-16 w-28 h-28 opacity-50 lg:left-[-20px] left-[-40px]  rotate-[270deg] md:rotate-0 "
+                        className="absolute bottom-0 top-40 lg:top-16 opacity-50 lg:left-[0px] left-[-30px]  rotate-[270deg] lg:rotate-0 "
                         alt="Curved Pattern"
                     />
 
@@ -78,7 +87,7 @@ const HowItWorks = () => {
                     </div>
                 </div>
 
-                <div className=" bg-[#EDEBF0] px-8 py-10 rounded-2xl col-span-7 md:col-span-5">
+                <div className=" bg-[#EDEBF0] px-8 py-12 rounded-2xl col-span-7 md:col-span-5">
                     <h1 className="text-2xl font-bold text-[#272727]">04</h1>
                     <h2 className="text-lg font-semibold text-[#272727]">Deliver to Buyer</h2>
                     <p className="text-[#272727] text-sm max-w-sm mt-2">
@@ -87,20 +96,22 @@ const HowItWorks = () => {
                 </div>
 
                 {/* Row 3 */}
-                <div className=" bg-[#EDEBF0] px-8 py-10 rounded-2xl col-span-7 md:col-span-5">
+                <div className=" bg-[#EDEBF0] px-8 py-12 rounded-2xl col-span-7 md:col-span-5">
                     <h1 className="text-2xl font-bold text-[#272727]">05</h1>
                     <h2 className="text-lg font-semibold text-[#272727]">Inspection & Approval</h2>
                     <p className="text-[#272727] text-sm max-w-sm mt-2">
                         The buyer reviews the delivered product or service and confirms satisfaction before proceeding to payment release.
                     </p>
                 </div>
-                <div className=" bg-[#D2A337] px-8 text-[#FFFFF2] lg:text-[#272727] py-10 rounded-2xl relative overflow-hidden col-span-7 flex flex-col justify-center text-left pl-16 pr-6">
+                <div className=" bg-[#D2A337] px-8 text-[#FFFFF2] lg:text-[#272727] py-12 rounded-2xl relative overflow-hidden col-span-7 flex flex-col justify-center text-left pl-16 pr-6">
 
                      {/* Top Right Curve */}
-                     <img
+                     <Image
+                     width={60}
+                     height={60}
                         src="/images/Group 19 (1).svg"
                         style={{filter: "invert(70%) sepia(70%) saturate(300%) hue-rotate(10deg) brightness(90%) contrast(100%)"}}
-                        className="absolute top-[-16px] right-[-56px] md:right-[-32px] w-28 h-28 opacity-50 rotate-[90deg] lg:rotate-[180deg] lg:right-[-24px]"
+                        className="absolute top-[-44px] right-[-56px] md:right-[-32px] opacity-50 rotate-[90deg] lg:rotate-[180deg] lg:right-[0px] lg:top-[0]"
                         alt="Curved Pattern"
                     />
 
@@ -108,7 +119,7 @@ const HowItWorks = () => {
                     <img
                         src="/images/Group 19 (1).svg"
                         style={{filter: "invert(70%) sepia(70%) saturate(300%) hue-rotate(10deg) brightness(90%) contrast(100%)"}}
-                        className="absolute bottom-0 top-36 lg:top-24 w-28 h-28 opacity-50 lg:left-[-39px] left-[-40px] rotate-[270deg] md:rotate-0 "
+                        className="absolute bottom-0 top-40 lg:top-24 w-28 h-28 opacity-50 lg:left-[-39px] left-[-40px] rotate-[270deg] md:top-26 lg:rotate-0 "
                         alt="Curved Pattern"
                     />
 

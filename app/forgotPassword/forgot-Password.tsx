@@ -17,7 +17,7 @@ const ForgotPassword = () => {
       >
         <h2 className="text-2xl font-semibold text-[#272727] text-left">Forgot Password</h2>
         <p className="text-gray-600 text-sm text-left mb-6 mt-5">
-          No worries, we'll send you reset instructions
+          No worries, we&apos;ll send you reset instructions
         </p>
 
         {/* Email Input */}

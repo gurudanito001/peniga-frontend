@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const HeroSection = () => {
   const [selectedTransaction, setSelectedTransaction] = useState("I'm Buying");
-  const [selectedCategory, setSelectedCategory] = useState("Tech Gadgets, Phones, Laptops");
-  const [selectedCurrency, setSelectedCurrency] = useState("For NGN");
+  const [selectedCategory, setSelectedCategory] = useState("Tech Gadgets");
+  const [selectedCurrency, setSelectedCurrency] = useState("NGN");
   const [amount, setAmount] = useState("");
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -40,19 +41,19 @@ const HeroSection = () => {
                   className="flex justify-between items-center w-full bg-transparent outline-none text-[#272727]"
                   onClick={() => toggleDropdown("transaction")}
                 >
-                  <span>{selectedTransaction}</span>
-                  <img src="/images/arrow-down.svg" alt="Dropdown Icon" className="w-5 h-5 md:mr-32" />
+                  <span className="capitalize">{selectedTransaction}</span>
+                  <Image src="/images/arrow-down.svg" alt="Dropdown Icon" className="md:mr-32" width={20} height={20}/>
                 </button>
                 {openDropdown === "transaction" && (
                   <div className="absolute left-0 mt-2 w-full bg-[#F3EDE7] border border-[#D8CBC4] rounded-lg shadow-lg z-10 p-2">
                     <button
-                      className="block w-full px-4 py-2 text-left whitespace-nowrap hover:bg-[#e5d8cf] text-[#272727]"
+                      className="block w-full capitalize px-4 py-2 text-left whitespace-nowrap hover:bg-[#e5d8cf] text-[#272727]"
                       onClick={() => {
                         setSelectedTransaction("I'm Buying");
                         setOpenDropdown(null);
                       }}
                     >
-                      I'm Buying
+                      I&apos;m Buying
                     </button>
                     <button
                       className="block w-full px-4 py-2 whitespace-nowrap text-left hover:bg-[#e5d8cf] text-[#272727]"
@@ -61,7 +62,7 @@ const HeroSection = () => {
                         setOpenDropdown(null);
                       }}
                     >
-                      I'm Selling
+                      I&apos;m Selling
                     </button>
                   </div>
                 )}
@@ -77,14 +78,14 @@ const HeroSection = () => {
                   onClick={() => toggleDropdown("category")}
                 >
                   <span className="truncate w-[90px] md:w-auto">{selectedCategory}</span>
-                  <img src="/images/arrow-down.svg" alt="Dropdown Icon" className="w-5 h-5 ml-2" />
+                  <Image src="/images/arrow-down.svg" alt="Dropdown Icon" className=" ml-2" width={20} height={20}/>
                 </button>
                 {openDropdown === "category" && (
                   <div className="absolute left-0 mt-2 w-[160px] md:w-[270px] bg-[#F3EDE7] border border-[#D8CBC4] rounded-lg shadow-lg z-10 p-2">
                     <button
                       className="block w-full px-4 py-2 text-left hover:bg-[#e5d8cf] text-[#272727] md:whitespace-nowrap"
                       onClick={() => {
-                        setSelectedCategory("Tech Gadgets, Phones, Laptops");
+                        setSelectedCategory("Tech Gadgets");
                         setOpenDropdown(null);
                       }}
                     >
@@ -93,7 +94,7 @@ const HeroSection = () => {
                     <button
                       className="block w-full px-4 py-2 text-left hover:bg-[#e5d8cf] text-[#272727]"
                       onClick={() => {
-                        setSelectedCategory("Electronics");
+                        setSelectedCategory("electronics");
                         setOpenDropdown(null);
                       }}
                     >
@@ -102,7 +103,7 @@ const HeroSection = () => {
                     <button
                       className="block w-full px-4 py-2 text-left hover:bg-[#e5d8cf] text-[#272727]"
                       onClick={() => {
-                        setSelectedCategory("Clothing");
+                        setSelectedCategory("clothing");
                         setOpenDropdown(null);
                       }}
                     >
@@ -124,14 +125,14 @@ const HeroSection = () => {
                   onClick={() => toggleDropdown("currency")}
                 >
                   <span>{selectedCurrency}</span>
-                  <img src="/images/arrow-down.svg" alt="Dropdown Icon" className="w-5 h-5 md:mr-32" />
+                  <Image src="/images/arrow-down.svg" alt="Dropdown Icon" className="md:mr-32" width={20} height={20}/>
                 </button>
                 {openDropdown === "currency" && (
                   <div className="absolute left-0 mt-2 w-full bg-[#F3EDE7] border border-[#D8CBC4] rounded-lg shadow-lg z-10 p-2">
                     <button
                       className="block w-full px-4 py-2 whitespace-nowrap text-left hover:bg-[#e5d8cf] text-[#272727]"
                       onClick={() => {
-                        setSelectedCurrency("For NGN");
+                        setSelectedCurrency("NGN");
                         setOpenDropdown(null);
                       }}
                     >

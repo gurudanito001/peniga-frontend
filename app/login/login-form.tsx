@@ -2,15 +2,18 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Image from "next/image";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 items-stretch min-h-[80vh] lg:min-h-[500px] justify-center px-4 md:px-8  lg:mt-10 mt-4 max-w-7xl mx-auto gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-5 items-stretch min-h-[80vh] lg:min-h-[500px] justify-center px-4 md:px-12  lg:mt-10 mt-4 max-w-7xl mx-auto gap-6">
       {/* Left Side - Image (Hidden on Mobile) */}
       <div className="hidden lg:block col-span-3">
-        <img
+        <Image
+        width={700}
+        height={700}
           src="/images/Frame 62.svg"
           alt="Login Illustration"
           className="w-full h-full object-cover rounded-lg"
@@ -79,7 +82,7 @@ const LoginForm = () => {
 
           {/* Sign Up Redirect */}
           <p className="text-center text-sm text-gray-600 mt-4" style={{fontWeight:"400"}}>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/sign-up">
               <span className="text-[#C55938] cursor-pointer font-medium underline" style={{fontWeight:"500"}}>
                 Create Account
