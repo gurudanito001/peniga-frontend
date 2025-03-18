@@ -9,7 +9,7 @@ const InsuredBy = () =>{
 
       {/* White Box - Centered Inside Green Background */}
       <div>
-        <Image src="/images/image 4.svg"  alt="Insured" width={120} height={120}/>
+        <Image src="/images/Insurance.svg"  alt="Insured" width={120} height={120}/>
         </div>
       </div>
     </div>
