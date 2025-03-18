@@ -107,8 +107,8 @@ const HowItWorks = () => {
 
                      {/* Top Right Curve */}
                      <Image
-                     width={60}
-                     height={60}
+                        width={60}
+                        height={60}
                         src="/images/Group 19 (1).svg"
                         style={{filter: "invert(70%) sepia(70%) saturate(300%) hue-rotate(10deg) brightness(90%) contrast(100%)"}}
                         className="absolute top-[-44px] right-[-56px] md:right-[-32px] opacity-50 rotate-[90deg] lg:rotate-[180deg] lg:right-[0px] lg:top-[0]"
@@ -116,7 +116,9 @@ const HowItWorks = () => {
                     />
 
                     {/* Left Curve */}
-                    <img
+                    <Image
+                        width={60}
+                        height={60}
                         src="/images/Group 19 (1).svg"
                         style={{filter: "invert(70%) sepia(70%) saturate(300%) hue-rotate(10deg) brightness(90%) contrast(100%)"}}
                         className="absolute bottom-0 top-40 lg:top-24 w-28 h-28 opacity-50 lg:left-[-39px] left-[-40px] rotate-[270deg] md:top-26 lg:rotate-0 "

@@ -28,7 +28,7 @@ const WhyChooseUs = () => {
           <div
             className="bg-[#F4EBD7] p-6 rounded-lg shadow-lg transform lg:rotate-[-6deg]"
           >
-            <Image src="/images/Group.png" alt="Accountability" width={200} height={200} />
+            <Image src="/images/accountability-image.svg" alt="Accountability" width={200} height={200} />
             <h3 className="text-[#272727] font-semibold mt-4">Accountability</h3>
             <p className="text-gray-600 text-sm mt-2">
             With Peniga, both buyers and sellers are held to their commitments, ensuring every transaction is completed fairly and transparently.
@@ -39,7 +39,7 @@ const WhyChooseUs = () => {
           <div
             className="bg-[#EECDC3] p-6 rounded-lg shadow-lg transform lg:rotate-[4deg]"
           >
-            <Image src="/images/Group (1).png" alt="Binding Contracts" width={200} height={200} />
+            <Image src="/images/contracts-image.svg" alt="Binding Contracts" width={200} height={200} />
             <h3 className="text-[#272727] font-semibold mt-4">Binding Contracts</h3>
             <p className="text-gray-600 text-sm mt-2">
             Our legally binding agreements reinforce accountability, providing a clear structure for every deal.
@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
           <div
             className="bg-[#E6FEFE] p-6 rounded-lg shadow-lg transform lg:rotate-[-3deg]"
           >
-            <Image src="/images/Clip path group.png" alt="Fast Payments" width={200} height={200} />
+            <Image src="/images/fast-payment-image.svg" alt="Fast Payments" width={200} height={200} />
             <h3 className="text-[#272727] font-semibold mt-4">Fast Payments</h3>
             <p className="text-gray-600 text-sm mt-2">
             Once the buyer confirms satisfaction, payments are released instantly, ensuring a smooth and efficient process.
@@ -61,7 +61,7 @@ const WhyChooseUs = () => {
           <div
             className="bg-[#FAF5EA] p-6 rounded-lg shadow-lg transform lg:rotate-[5deg]"
           >
-            <Image src="/images/Group (2).png" alt="24/7 Support" width={200} height={200} />
+            <Image src="/images/support-image.svg" alt="24/7 Support" width={200} height={200} />
             <h3 className="text-[#272727] font-semibold mt-4">24/7 Support</h3>
             <p className="text-gray-600 text-sm mt-2">
             Our dedicated support team is available around the clock to handle disputes, resolving issues fairly based on contract terms.
