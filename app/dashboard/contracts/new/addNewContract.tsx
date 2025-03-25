@@ -1,7 +1,6 @@
 import InsideNavbar from "../../insideNavbar";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 
-
 const AddNewContract = () =>{
 
   return(
@@ -200,11 +199,11 @@ const AddNewContract = () =>{
                     <div className="label">
                       <span className="label-text text-neutral-500">Agreement Term</span>
                     </div>
-                    <textarea className="textarea textarea-bordered" rows={3} placeholder="Enter Agreement Term"></textarea>
+                    <textarea className="textarea textarea-bordered text-[#272727]" rows={3} placeholder="Enter Agreement Term"></textarea>
                   </label>
 
                   <div className="mt-5">
-                    <button type="button" className="btn btn-block btn-secondary">Save</button>
+                    <button type="button" className="btn btn-block btn-secondary text-[#272727]">Save</button>
                   </div>
                 </article>
               </div>
@@ -214,25 +213,24 @@ const AddNewContract = () =>{
 
           <ul className="flex flex-col gap-2">
             <li className="flex items-center w-full max-w-5xl gap-2">
-              <span className="inline-block border border-neutral-400 px-4 py-3 text-sm rounded-md w-full shadow">
+              <span className="inline-block border border-neutral-400 px-4 py-3 text-sm rounded-md w-full shadow text-[#272727]">
                 The first term is that the products must be delivered in perfect condition. Any damage detected on the products before or during delivery will be at the expense of the seller.
               </span>
-              <XMarkIcon className="w-6" />
+              <XMarkIcon className="w-6" color="black"/>
             </li>
             <li className="flex items-center w-full max-w-5xl gap-2">
-            <span className="inline-block border border-neutral-400 px-4 py-3 text-sm rounded-md w-full shadow">
+            <span className="inline-block border border-neutral-400 px-4 py-3 text-sm rounded-md w-full shadow text-[#272727]">
                 The second term is that the products must be delivered in perfect condition. Any damage detected on the products before or during delivery will be at the expense of the seller.
               </span>
-              <XMarkIcon className="w-6" />
+              <XMarkIcon className="w-6" color="black"/>
             </li>
             <li className="flex items-center w-full max-w-5xl gap-2">
-            <span className="inline-block border border-neutral-400 px-4 py-3 text-sm rounded-md w-full shadow">
+            <span className="inline-block border border-neutral-400 px-4 py-3 text-sm rounded-md w-full shadow text-[#272727]">
                 The third term is that the products must be delivered in perfect condition. Any damage detected on the products before or during delivery will be at the expense of the seller.
               </span>
-              <XMarkIcon className="w-6" />
+              <XMarkIcon className="w-6" color="black"/>
             </li>
           </ul>
-          
         </div>
       </form>
     </section>

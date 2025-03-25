@@ -2,18 +2,19 @@ import Image from "next/image";
 import { DocumentPlusIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import AddNewContract from "./new/addNewContract";
+import { FaFileSignature } from "react-icons/fa";
 
 
 
 const ContractItem = () =>{
 
   return(
-    <li className="p-4 flex items-start gap-2 border-b">
-      <figure><Image src="/images/contract-white.png" alt="home" width={45} height={45} className="bg-secondary p-2 rounded-sm" /> </figure>
+    <li className="p-4 flex items-start gap-2 border-b bg-[#E8F5E9]">
+      <figure><FaFileSignature className="bg-secondary p-2 rounded-sm text-4xl" color="grey" /> </figure>
       <article className="w-full">
         <header className="flex items-center">
-          <h4 className="text-sm font-semibold">Buying cargo of goods from Italy</h4>
-          <span className="loading loading-ring font-bold text-success ml-auto"></span>
+          <h4 className="text-sm font-semibold text-[#272727]">Buying cargo of goods from Italy</h4>
+          <span className="loading loading-ring font-bold text-black ml-auto"></span>
         </header>
         <p className="text-neutral-500 text-xs"> <span className="font-semibold">Michael Onuoha</span> <span className="ml-1">(Buyer)</span></p>
         <p className="flex items-center text-xs mt-2 text-neutral-400">
@@ -29,15 +30,15 @@ const ContractItem = () =>{
 const AllContracts = () =>{
 
   return (
-    <section className="flex text-neutral max-h-screen overflow-y-clip bg-neutral-100/50">
+    <section className="flex text-neutral max-h-screen overflow-y-clip bg-[#E8F5E9]">
       <aside className="md:min-w-max pt-10">
         <header className=" text-2xl font-bold mb-5 px-3 lg:px-5 flex items-center w-full">
-          <span>Contracts</span>
-          <Link href="" className="ml-auto"> <DocumentPlusIcon className="w-6" /></Link>
+          <span className="text-[#272727]">Contracts</span>
+          <Link href="" className="ml-auto"> <DocumentPlusIcon className="w-6" color="grey"/></Link>
         </header>
 
         <ul className="max-h-full overflow-y-auto pb-24">
-          <ContractItem />
+          <ContractItem/>
           <ContractItem />
           <ContractItem />
           <ContractItem />

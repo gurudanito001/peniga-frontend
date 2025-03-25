@@ -1,4 +1,3 @@
-
 import {  Nunito } from "next/font/google";
 import '@/app/globals.css';
 //import InsideNavbar from "./insideNavbar";
@@ -17,12 +16,12 @@ export default function RootLayout({
     <html className={`${nunito.className} bg-white`} >
       <body>
         <div className="flex h-screen">
-          <div className="hidden lg:block">
+          <div className="hidden md:block">
             <Sidebar />
           </div>
           
 
-          <main className="flex-1 bg-white">
+          <main className="flex-1 bg-white  min-h-screen">
 
             <div className="drawer h-full">
               <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
