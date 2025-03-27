@@ -2,7 +2,7 @@ import InsideNavbar from "../../insideNavbar";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 
 
-const AddNewContract = ({show}: {show?: boolean}) =>{
+const ContractDetails = ({show}: {show?: boolean}) =>{
 
   return(
     <section className={`w-full h-full overflow-y-clip bg-neutral-100 ${!show && "hidden md:block"}`}>
@@ -239,4 +239,4 @@ const AddNewContract = ({show}: {show?: boolean}) =>{
   )
 }
 
-export default AddNewContract
+export default ContractDetails
