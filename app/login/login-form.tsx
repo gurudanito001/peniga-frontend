@@ -14,7 +14,7 @@ const LoginForm = () => {
         <Image
         width={700}
         height={700}
-          src="/images/Frame 62.svg"
+          src="/images/Login.svg"
           alt="Login Illustration"
           className="w-full h-full object-cover rounded-lg"
         />

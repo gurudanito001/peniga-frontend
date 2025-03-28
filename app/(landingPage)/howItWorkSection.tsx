@@ -36,7 +36,7 @@ const HowItWorks = () => {
                     <Image
                     width={70}
                     height={70}
-                        src="/images/Group 19.svg"
+                        src="/images/AgreementImage.svg"
                         className="absolute top-[-32px] right-[-56px] md:right-[-48px] opacity-50 rotate-[90deg] lg:right-0"
                         alt="Curved Pattern"
                     />
@@ -45,7 +45,7 @@ const HowItWorks = () => {
                     <Image
                     width={70}
                     height={70}
-                        src="/images/Group 19.svg"
+                        src="/images/AgreementImage.svg"
                         className="absolute bottom-0 top-36 lg:top-16 opacity-50 lg:left-[-6px] md:left-[-48px] rotate-[270deg] lg:rotate-0 left-[-36px]"
                         alt="Curved Pattern"
                     />
@@ -64,7 +64,7 @@ const HowItWorks = () => {
                     <Image
                     width={70}
                     height={70}
-                        src="/images/Group 19 (1).svg"
+                        src="/images/SecurePayment.svg"
                         className="absolute top-[-44px] lg:top-12 bottom-0 right-[-56px] lg:right-[0px] lg:translate-y-[40%] lg:rotate-[270deg] opacity-50 rotate-[90deg]"
                         alt="Curved Pattern"
                     />
@@ -73,7 +73,7 @@ const HowItWorks = () => {
                     <Image
                     width={60}
                     height={60}
-                        src="/images/Group 19 (1).svg"
+                        src="/images/SecurePayment.svg"
                         className="absolute bottom-0 top-40 lg:top-16 opacity-50 lg:left-[0px] left-[-30px]  rotate-[270deg] lg:rotate-0 "
                         alt="Curved Pattern"
                     />
@@ -109,7 +109,7 @@ const HowItWorks = () => {
                      <Image
                         width={60}
                         height={60}
-                        src="/images/Group 19 (1).svg"
+                        src="/images/SecurePayment.svg"
                         style={{filter: "invert(70%) sepia(70%) saturate(300%) hue-rotate(10deg) brightness(90%) contrast(100%)"}}
                         className="absolute top-[-44px] right-[-56px] md:right-[-32px] opacity-50 rotate-[90deg] lg:rotate-[180deg] lg:right-[0px] lg:top-[0]"
                         alt="Curved Pattern"
@@ -119,7 +119,7 @@ const HowItWorks = () => {
                     <Image
                         width={60}
                         height={60}
-                        src="/images/Group 19 (1).svg"
+                        src="/images/SecurePayment.svg"
                         style={{filter: "invert(70%) sepia(70%) saturate(300%) hue-rotate(10deg) brightness(90%) contrast(100%)"}}
                         className="absolute bottom-0 top-40 lg:top-24 w-28 h-28 opacity-50 lg:left-[-39px] left-[-40px] rotate-[270deg] md:top-26 lg:rotate-0 "
                         alt="Curved Pattern"

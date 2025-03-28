@@ -4,7 +4,7 @@
 const Home = () =>{
 
   return (
-    <section>This is the dashboard homepage</section>
+    <section className="text-[#272727]">This is the dashboard homepage</section>
   )
 }
 

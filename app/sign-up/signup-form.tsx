@@ -15,7 +15,7 @@ const SignUpForm = () => {
         <Image
         width={700}
         height={700}
-          src="/images/Frame 60.svg"
+          src="/images/Signup.svg"
           alt="Sign Up"
           className=" object-cover rounded-lg"
         />
