@@ -55,7 +55,7 @@ const PreviewContract = () => {
         );
     };
 
-    
+
 
     return (
         <section className="w-full h-screen bg-neutral-100 p-5 overflow-y-hidden">
@@ -99,73 +99,79 @@ const PreviewContract = () => {
                 </div>
 
                 <div className="border p-3 lg:p-5 mb-5">
-    <header className="text-lg font-semibold text-neutral-400 mb-5 flex items-center w-full">
-        <span className="min-w-max">Contract Items</span>
+                    <header className="text-lg font-semibold text-neutral-400 mb-5 flex items-center w-full">
+                        <span className="min-w-max">Contract Items</span>
 
-        {/* Add New Contract */}
-        <div className="drawer drawer-end w-auto ml-auto">
-            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                <label htmlFor="my-drawer-4" className="drawer-button btn btn-sm h-9 btn-accent z-0">
-                    Add New
-                </label>
-            </div>
-            <div className="drawer-side">
-                <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                <article className="menu bg-base-200 text-base-content min-h-full w-full sm:w-96 p-4 z-20">
-                    <header className="text-lg font-semibold text-neutral-300 mb-5">Add New Contract Item</header>
+                        {/* Add New Contract */}
+                        <div className="drawer drawer-end w-auto ml-auto">
+                            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+                            <div className="drawer-content">
+                                <label htmlFor="my-drawer-4" className="drawer-button btn btn-sm h-9 btn-accent z-0">
+                                    Add New
+                                </label>
+                            </div>
+                            <div className="drawer-side">
+                                <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                                <article className="menu bg-base-200 text-base-content min-h-full w-full sm:w-96 p-4 z-20">
+                                    <header className="text-lg font-semibold text-neutral-300 mb-5">Add New Contract Item</header>
 
-                    {/* Item Name */}
-                    <label className="form-control w-full mb-2">
-                        <span className="label-text text-[#272727]">Item Name</span>
-                        <input type="text" placeholder="Name of Item" className="input input-bordered w-full placeholder:text-sm text-[#272727]" />
-                    </label>
+                                    {/* Item Name */}
+                                    <label className="form-control w-full mb-2">
+                                        <span className="label-text text-[#272727]">Item Name</span>
+                                        <input type="text" placeholder="Name of Item" className="input input-bordered w-full placeholder:text-sm text-[#272727]" />
+                                    </label>
 
-                    {/* Price */}
-                    <label className="form-control w-full mb-2">
-                        <span className="label-text text-[#272727]">Price</span>
-                        <input type="text" placeholder="Price of Item" className="input input-bordered w-full placeholder:text-sm text-[#272727]" />
-                    </label>
+                                    {/* Price */}
+                                    <label className="form-control w-full mb-2">
+                                        <span className="label-text text-[#272727]">Price</span>
+                                        <input type="text" placeholder="Price of Item" className="input input-bordered w-full placeholder:text-sm text-[#272727]" />
+                                    </label>
 
-                    {/* Category */}
-                    <label className="form-control w-full mb-2">
-                        <span className="label-text text-[#272727]">Category</span>
-                        <select className="select select-bordered w-full text-[#272727]">
-                            <option>Tech Gadgets</option>
-                            <option disabled>Cars, Trucks, etc.</option>
-                        </select>
-                    </label>
+                                    {/* Category */}
+                                    <label className="form-control w-full mb-2">
+                                        <span className="label-text text-[#272727]">Category</span>
+                                        <select className="select select-bordered w-full text-[#272727]">
+                                            <option>Tech Gadgets</option>
+                                            <option disabled>Cars, Trucks, etc.</option>
+                                        </select>
+                                    </label>
 
-                    {/* Description */}
-                    <label className="form-control w-full mb-2">
-                        <span className="label-text text-[#272727]">Description</span>
-                        <textarea className="textarea textarea-bordered text-[#272727]" placeholder="Describe the item"></textarea>
-                    </label>
+                                    {/* Description */}
+                                    <label className="form-control w-full mb-2">
+                                        <span className="label-text text-[#272727]">Description</span>
+                                        <textarea className="textarea textarea-bordered text-[#272727]" placeholder="Describe the item"></textarea>
+                                    </label>
 
-                    {/* Images */}
-                    <label className="form-control w-full mb-2">
-                        <span className="label-text text-[#272727]">Images</span>
-                        <input type="file" className="file-input file-input-bordered w-full text-[#272727]" />
-                    </label>
+                                    {/* Images */}
+                                    <label className="form-control w-full mb-2">
+                                        <span className="label-text text-[#272727]">Images</span>
+                                        <input type="file" className="file-input file-input-bordered w-full text-[#272727]" />
+                                    </label>
 
-                    {/* Save Button */}
-                    <div className="mt-5">
-                        <button type="button" className="btn btn-block btn-secondary text-[#272727]">Save</button>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </header>
+                                    {/* Save Button */}
+                                    <div className="mt-5">
+                                        <button type="button" className="btn btn-block btn-secondary text-[#272727]">Save</button>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </header>
 
-    {/* Contract Items List */}
-    <ul className="space-y-4">
+                    {/* Contract Items List */}
+                    <ul className="space-y-4">
   {products.map((product) => (
-    <li key={product.id} className="border-b py-4 flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+    <li
+      key={product.id}
+      className="border-b py-4 flex flex-row items-center justify-between gap-10 flex-wrap"
+    >
       {/* Image */}
-      <img src={product.image} className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg object-cover" />
+      <img
+        src={product.image}
+        className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg object-cover"
+      />
 
       {/* Product Details */}
-      <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left">
+      <div className="flex-1 flex flex-col items-start text-left">
         <h2 className="text-gray-800 font-semibold">{product.name}</h2>
         <p className="text-gray-500 text-sm">{product.model}</p>
 
@@ -177,7 +183,10 @@ const PreviewContract = () => {
           <div className="relative group text-[#272727]">
             <button className="flex items-center gap-2">
               <span className="text-sm">{product.selectedColor.name}</span>
-              <span className="w-4 h-4 rounded-full border" style={{ backgroundColor: product.selectedColor.hex }}></span>
+              <span
+                className="w-4 h-4 rounded-full border"
+                style={{ backgroundColor: product.selectedColor.hex }}
+              ></span>
             </button>
 
             {/* Color Options Dropdown */}
@@ -192,7 +201,10 @@ const PreviewContract = () => {
                   }}
                 >
                   <span>{color.name}</span>
-                  <span className="w-4 h-4 rounded-full border" style={{ backgroundColor: color.hex }}></span>
+                  <span
+                    className="w-4 h-4 rounded-full border"
+                    style={{ backgroundColor: color.hex }}
+                  ></span>
                 </button>
               ))}
             </div>
@@ -201,29 +213,35 @@ const PreviewContract = () => {
       </div>
 
       {/* Quantity & Price */}
-      <div className="flex flex-col sm:flex-row items-center gap-4">
+      <div className="flex items-center gap-4">
         <input
           type="number"
           value={product.quantity}
-          onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value) || 0)}
+          onChange={(e) =>
+            handleQuantityChange(product.id, parseInt(e.target.value) || 0)
+          }
           className="w-16 text-center border rounded-md px-2 py-1 bg-transparent text-gray-500"
           min="0"
         />
-        <p className="font-semibold text-gray-700">NGN{(product.quantity * product.price).toFixed(2)}</p>
+        <p className="font-semibold text-gray-700">
+          NGN{(product.quantity * product.price).toFixed(2)}
+        </p>
       </div>
 
       {/* Delete Button */}
-      <button className='mt-1'>
-        <FaTrash size={18} color='black'/>
+      <button className="ml-4">
+        <FaTrash size={18} color="black" />
       </button>
     </li>
   ))}
 </ul>
 
-    {/* Confirm Purchase Button */}
-    <div className="flex justify-center sm:justify-end mt-5">
-        <button className="btn btn-sm h-9 text-gray-400 font-semibold btn-accent">Confirm Purchase</button>
-    </div>
+{/* Confirm Purchase Button */}
+<div className="flex justify-end mt-5">
+  <button className="btn btn-sm h-9 text-gray-400 font-semibold btn-accent">
+    Confirm Purchase
+  </button>
+</div>
 </div>
 
 
