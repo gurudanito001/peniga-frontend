@@ -76,7 +76,7 @@ const FAQSection = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2 text-sm font-medium rounded transition-all ${
+              className={`px-6 py-2 text-sm font-medium rounded transition-all text-nowrap ${
                 activeCategory === category
                   ? "bg-[#0A6E5A] text-white"
                   : "text-[#272727]"

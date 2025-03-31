@@ -28,10 +28,10 @@ const ContractItem = () =>{
 
 
 
-const AllContracts = ({show}: {show?: boolean}) =>{
+const AllContracts = () =>{
 
   return (
-    <aside className={`w-full md:max-w-max pt-10 ${show === false && "hidden lg:block"}`}>
+    <aside className={`w-full md:max-w-max pt-10`}>
       <header className=" text-2xl font-bold mb-5 px-3 lg:px-5 flex items-center w-full">
         <span>Contracts</span>
         <Link href="" className="ml-auto"> <DocumentPlusIcon className="w-6" /></Link>
