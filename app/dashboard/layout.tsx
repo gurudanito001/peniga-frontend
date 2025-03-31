@@ -16,7 +16,7 @@ export default function RootLayout({
     <html className={`${nunito.className} bg-white`} >
       <body>
         <div className="flex h-screen">
-          <div className="hidden md:block">
+          <div className="hidden md:flex h-screen">
             <Sidebar />
           </div>
           

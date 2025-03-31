@@ -11,45 +11,61 @@
 @tailwind components;
 @tailwind utilities;
 
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "lemonade";
+  default: true;
+  --color-primary: #025253;
+  --color-secondary: #C55938;
+  --color-base: #FAFAFA;
+  --color-neutral: #EDEBF0;
+  --color-accent: #D2A337;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --primary: #025253;
+    --secondary: #C55938;
+    --base: #FAFAFA;
+    --base-content: #272727;
+    --neutral: #EDEBF0;
+    --accent: #D2A337;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--base-content);
+  background: var(--base);
+  font-family: "Figtree";
 }
 
 h1, h2, h3{
   font-family: "Instrument Sans";
 }
 
-p, a, li, button, label, input{
-  font-family: "Figtree";
-}
-
 .grid-background{
-  
   background-color: #F5F5F5;
   background-image:  linear-gradient(to right, rgba(224, 224, 224, 0.4) 1px, transparent 1px),
   linear-gradient(to bottom, rgba(224, 224, 224, 0.4) 1px, transparent 1px);
   background-size: 40px 40px;
-  
 }
 
 .fading-effect{
- 
   bottom: 0;
   width: 100%;
   height: 100px; /* Adjust this height based on how much fade you want */
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
   pointer-events: none; /* Ensures it doesn’t block clicks */
+}
+
+.steps li:not(:first-child)::before {
+  border-left-width: 2px; /* Adjust the value as needed */
+  border-right-width: 2px;
+  border-color: oklch(0.9871 0.02 123.72);
+  outline: none;
 }

@@ -4,7 +4,7 @@ import { XMarkIcon } from "@heroicons/react/16/solid";
 const AddNewContract = () =>{
 
   return(
-    <section className="w-full h-full overflow-y-clip bg-neutral-100">
+    <section className={`w-full h-full overflow-y-clip bg-neutral-100`}>
       <InsideNavbar />
       <header className=" text-xl font-semibold text-neutral-600 mb-5 px-3 lg:px-5 flex items-center w-full">
         <span>Create New Contract</span>
