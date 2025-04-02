@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const HowItWorks = () => {
     return (
-        <section className="max-w-6xl mx-auto px-6">
+        <section className="max-w-6xl mx-auto px-6 pb-24">
             {/* Heading Section */}
             <div className="text-left mb-12">
                 <button className="px-4 py-1 md:px-6 md:py-2 border-2 border-[#C55938] text-[#C55938] rounded-full font-medium hover:bg-[#C55938] hover:text-white transition">

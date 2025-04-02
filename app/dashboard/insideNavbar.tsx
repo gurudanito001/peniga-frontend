@@ -1,10 +1,10 @@
-import { FaBell, FaEnvelope } from 'react-icons/fa';
+import { FaBell } from 'react-icons/fa';
 
 
 const InsideNavbar = () => {
 
   return (
-    <nav className="navbar text-base-content w-full">
+    <nav className="navbar text-base-content w-full py-5">
       
       <div className="flex-none lg:block p-0 w-full">
         <ul className="menu menu-horizontal p-0 flex">
@@ -31,14 +31,7 @@ const InsideNavbar = () => {
               </div>
             </a>
           </li>
-          <li className="divider divider-horizontal divider-start divider-neutral bg-transparent m-0 my-2"></li>
-          <li className='flex justify-center'>
-            <a className='hover:bg-transparent'>
-                <div className="indicator">
-                  <FaEnvelope fontSize={16} />
-                </div>
-            </a>
-          </li>
+          
         </ul>
       </div>
     </nav>
