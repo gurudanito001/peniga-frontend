@@ -50,13 +50,13 @@ const handleColorChange = (id: number, selectedColor: { name: string; hex: strin
 
 
   return(
-    <section className="w-full h-screen bg-neutral-100 p-5 overflow-y-hidden">
+    <section className="w-full h-screen bg-neutral-100 p-5 overflow-y-auto">
       <InsideNavbar />
       <div className="flex-1 h-full p-5">
       <header className=" text-xl font-semibold text-neutral-600 mb-5 px-3 lg:px-5 flex items-center w-full">
         <span>Create New Contract</span>
       </header>
-      <form className="px-3 lg:px-5 max-h-full overflow-y-auto pb-36">
+      <form className="px-3 lg:px-5 pb-36 max-w-6xl">
 
         <div className="border p-3 lg:p-5 mb-5">
           <header className=" text-lg font-semibold text-neutral-400 mb-5 flex items-center w-full">

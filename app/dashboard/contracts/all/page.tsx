@@ -1,6 +1,6 @@
 
 import React from "react"; 
-import AllContracts from "../allContracts";
+import AllContracts from "./allContracts";
 
 const ViewAllContracts = () => { 
   return ( 

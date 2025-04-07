@@ -8,7 +8,7 @@ import { FaEnvelope, FaComment, FaDownload, FaCheck, FaInfo } from "react-icons/
 const Home = () => {
 
   return (
-    <section className={`w-full min-h-screen overflow-y-auto bg-base-100/40`}>
+    <section className={`w-full h-screen p-5 overflow-y-auto bg-base-100/40`}>
       <InsideNavbar />
       <div className="w-full flex">
         <div className="w-full md:w-3/5 xl:w-2/3">

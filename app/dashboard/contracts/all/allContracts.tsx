@@ -7,7 +7,7 @@
 
 import { FaUserCircle } from "react-icons/fa";
 import Link from "next/link";
-import InsideNavbar from "../insideNavbar";
+import InsideNavbar from "../../insideNavbar";
 
 const AllContracts = () => {
   const contracts = [
@@ -59,17 +59,17 @@ const AllContracts = () => {
   ];
 
   return (
-    <section className=" bg-[#E8F5E9] h-screen  overflow-y-hidden w-full">
+    <section className=" bg-[#E8F5E9] h-screen  overflow-y-auto w-full">
       <InsideNavbar/>
-      <div className="max-w-5xl mx-auto  flex flex-col h-[90vh]">
+      <div className="mx-auto flex flex-col px-5 lg:px-12 mt-7">
         <div className=" mb-5 flex items-center justify-between">
           <h1 className="font-bold text-2xl">All Contracts</h1>
           <Link href="/dashboard/contracts">
-            <button className="ml-auto border px-4 py-2 rounded-md text-gray-500 text-xl">Back</button>
+            <button className="ml-auto border px-4 py-2 rounded-md text-gray-500 text-xl">Filter</button>
           </Link>
         </div>
         
-        <div className="flex-1 overflow-y-auto rounded-lg pr-4">
+        <div className="flex-1 rounded-lg">
         {contracts.map((contract, index) => (
           <div key={index} className="bg-gray-100 p-4 mb-4 rounded-lg shadow flex flex-col md:flex-row justify-evenly items-center gap-4 md:gap-0">
             <div className="flex items-center min-w-[200px]">
