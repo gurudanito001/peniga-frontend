@@ -76,13 +76,13 @@ const Home = () => {
 
                     <div className="flex flex-col p-2 bg-neutral rounded-md text-neutral-content">
                       <span className="countdown font-mono text-xl">
-                        <span style={{ "--value": 24 } /* as React.CSSProperties */} aria-live="polite" aria-label={''}>24</span>
+                        <span style={{ "--value": 24 } as React.CSSProperties } aria-live="polite" aria-label={''}>24</span>
                       </span>
                       min
                     </div>
                     <div className="flex flex-col p-2 bg-neutral rounded-md text-neutral-content">
                       <span className="countdown font-mono text-xl">
-                        <span style={{ "--value": 59 } /* as React.CSSProperties */} aria-live="polite" aria-label={''}>59</span>
+                        <span style={{ "--value": 59 }  as React.CSSProperties} aria-live="polite" aria-label={''}>59</span>
                       </span>
                       sec
                     </div>
@@ -177,7 +177,7 @@ const Home = () => {
               <h4 className="text-2xl font-bold mb-8 text-center">Contract Progress</h4>
               <div className="stat-figure text-secondary">
                 <div className="radial-progress text-4xl font-extrabold"
-                  style={{ "--value": "40", "--size": "12rem", "--thickness": "1.5rem" } /* as React.CSSProperties */}
+                  style={{ "--value": "40", "--size": "12rem", "--thickness": "1.5rem" } as React.CSSProperties}
                   aria-valuenow={70} role="progressbar">40%</div>
               </div>
               <div className="stat-title text-center font-semibold text-xl mt-4">2 Steps done</div>

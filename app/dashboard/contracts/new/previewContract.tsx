@@ -5,6 +5,7 @@ import { FaTrash } from 'react-icons/fa';
 import InsideNavbar from '../../insideNavbar';
 import { XMarkIcon } from '@heroicons/react/16/solid';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const PreviewContract = () => {
     const [products, setProducts] = useState([
@@ -165,7 +166,10 @@ const PreviewContract = () => {
       className="border-b py-4 flex flex-row items-center justify-between gap-10 flex-wrap"
     >
       {/* Image */}
-      <img
+      <Image
+        alt="Product Image"
+        width={80}
+        height={80}
         src={product.image}
         className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg object-cover"
       />
