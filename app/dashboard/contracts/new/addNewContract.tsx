@@ -3,6 +3,7 @@
 import InsideNavbar from "../../insideNavbar";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
+import Image from "next/image";
 
 
 
@@ -173,7 +174,7 @@ const handleColorChange = (id: number, selectedColor: { name: string; hex: strin
             {products.map((product, index) => (
               <li key={product.id} className={`${index !== products.length - 1  && "border-b"} py-4 flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 max-w-2xl`}>
                 {/* Image */}
-                <img src={product.image} className="w-20 h-20 sm:w-24 sm:h-20 rounded-lg object-cover" />
+                <Image alt="Product Image" width={80} height={80} src={product.image} className="w-20 h-20 sm:w-24 sm:h-20 rounded-lg object-cover" />
 
                 {/* Product Details */}
                 <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left">
