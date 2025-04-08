@@ -11,7 +11,7 @@ const contract = {
 
 export default function SmallScreenContracts() {
   return (
-    <div className="lg:hidden">
+    <div className="lg:hidden mb-10">
       <h1 className="text-[#272727] mt-10 text-lg mb-10 font-semibold lg:hidden">
         Your Contracts
       </h1>

@@ -38,20 +38,20 @@ const ContractsDashboard = () => {
       sharedBG: ["bg-black", "bg-green-900", "bg-blue-900"],
       othersCount: 32
     },
-    /*  */
+    
   ];
 
   return (
 
     <section className="flex flex-col text-neutral h-screen bg-[#E8F5E9] md:px-6 overflow-y-auto">
       <InsideNavbar />
-      <header className="text-2xl font-bold mb-5 flex items-center w-full mt-5">
+      <header className="text-2xl font-bold mb-5 flex items-center w-full mt-5 px-5">
         <span className="text-[#272727]">Contracts</span> <Link href="/dashboard/contracts/new" className="ml-auto px-4 py-2 bg-[#272727] text-white rounded-md text-sm">Create Contract</Link>
       </header>
 
       <div className="border-b border-gray-300 w-full mb-5"></div>
-      <div className="pr-4">
-        <h2 className="text-lg font-semibold mb-3">Categories</h2>
+      <div className="">
+        <h2 className="text-lg font-semibold mb-3 px-5">Categories</h2>
 
         <div className="bg-gray-100 p-6 rounded-lg">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -65,7 +65,7 @@ const ContractsDashboard = () => {
                   <BsThreeDotsVertical className="ml-auto cursor-pointer text-gray-600" />
                 </div>
                 <p className="text-sm text-gray-500">{category.documents} Documents</p>
-                <div className="flex items-center gap-2 mt-7">
+                <div className="flex items-center gap-2 mt-7 flex-wrap">
                   <p className="text-sm text-gray-500 mr-5 text-nowrap">Shared with</p>
                   <div className="flex items-center">
                     {category.sharedWith.map((letter, index) => (

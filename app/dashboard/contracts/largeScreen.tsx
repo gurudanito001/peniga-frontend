@@ -63,7 +63,7 @@ export default function LargeScreenContracts() {
       {contracts.slice(0, 5).map((contract, index) => (
         <div
           key={index}
-          className="bg-gray-100 p-4 mb-4 rounded-lg shadow flex flex-col md:flex-row justify-evenly items-center gap-4 md:gap-0"
+          className="bg-gray-100 p-4 mb-4 rounded-lg shadow flex flex-col lg:flex-row justify-evenly items-center gap-4 lg:gap-0 flex-wrap"
         >
           <div className="flex items-center min-w-[200px]">
             <FaUserCircle className=" mr-2 text-4xl text-gray-500" />

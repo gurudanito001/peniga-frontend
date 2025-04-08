@@ -18,13 +18,13 @@ const Sidebar = () => {
       </h1>
       <nav className="flex flex-col grow">
         <Link href="/dashboard" className={`rounded-lg p-4 font-semibold flex hover:text-indigo-400 justify-start`}>
-          <span className='flex items-center gap-2' style={{fontSize: "16px"}}><FaChartLine className='text-2xl ' color='white'/> Dashboard</span>
+          <span className='flex items-center gap-2 text-white hover:text-[#272727]' style={{fontSize: "16px"}}><FaChartLine className='text-2xl ' color='white'/> Dashboard</span>
         </Link>
         <Link href="/dashboard/contracts" className={`rounded-lg p-4 font-semibold flex items-center hover:text-indigo-400 justify-start`}>
-          <span className='flex items-center gap-2' style={{fontSize: "16px"}}><FaFileSignature className='text-2xl' color='white'/> Contracts</span>
+          <span className='flex items-center gap-2 text-white hover:text-[#272727]' style={{fontSize: "16px"}}><FaFileSignature className='text-2xl' color='white'/> Contracts</span>
         </Link>
         <Link href="/dashboard/clients" className={`rounded-lg p-4 font-semibold flex items-center hover:text-indigo-400 justify-start`}>
-          <span className='flex items-center gap-2' style={{fontSize: "16px"}}> <FaUsers className='text-2xl' color='white'/> Clients</span>
+          <span className='flex items-center gap-2 text-white hover:text-[#272727]' style={{fontSize: "16px"}}> <FaUsers className='text-2xl' color='white'/> Clients</span>
         </Link>
 
 
