@@ -6,8 +6,8 @@ import Image from "next/image";
 const HeroSection = () => {
   const [selectedTransaction, setSelectedTransaction] = useState("I'm Buying");
   const [selectedCategory, setSelectedCategory] = useState("Tech Gadgets");
-  const [selectedCurrency, setSelectedCurrency] = useState("NGN");
-  const [amount, setAmount] = useState("");
+  //const [selectedCurrency, setSelectedCurrency] = useState("NGN");
+  //const [amount, setAmount] = useState("");
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
@@ -28,21 +28,21 @@ const HeroSection = () => {
         </p>
 
         {/* Form Container */}
-        <div className="mt-5 max-w-4xl mx-auto bg-[#F3EDE7] p-6  rounded-lg border border-[#D8CBC4] lg:max-w-2xl lg:h-[300px]">
-          <form className="rounded-2xl md:p-6 w-full mx-auto mt-5 md:mt-0">
+        <div className="mt-16 max-w-4xl mx-auto bg-[#F3EDE7] p-6  rounded-lg border border-[#D8CBC4] lg:max-w-2xl lg:h-[300px] flex items-center">
+          <form className="rounded-2xl md:p-6 w-full mx-auto mt-5 md:mt-0 border">
             
             {/* First Row */}
             <div className="mb-4 flex flex-row items-center bg-[#F2F2F2] border border-[#A5A5A5] rounded-lg p-3 w-full">
               
               {/* Transaction Type Dropdown */}
-              <div className="relative w-1/2">
+              <div className="relative w-5/12">
                 <button
                   type="button"
                   className="flex justify-between items-center w-full bg-transparent outline-none text-[#272727]"
                   onClick={() => toggleDropdown("transaction")}
                 >
-                  <span className="capitalize">{selectedTransaction}</span>
-                  <Image src="/images/arrow-down.svg" alt="Dropdown Icon" className="md:mr-32" width={20} height={20}/>
+                  <span className="capitalize text-sm md:text-base">{selectedTransaction}</span>
+                  <Image src="/images/arrow-down.svg" alt="Dropdown Icon" className="" width={12} height={12}/>
                 </button>
                 {openDropdown === "transaction" && (
                   <div className="absolute left-0 mt-2 w-full bg-[#F3EDE7] border border-[#D8CBC4] rounded-lg shadow-lg z-10 p-2">
@@ -71,14 +71,14 @@ const HeroSection = () => {
               <div className="h-6 w-px bg-gray-900 mx-4 "></div>
 
               {/* Category Dropdown */}
-              <div className="relative w-1/2">
+              <div className="relative w-7/12">
                 <button
                   type="button"
                   className="flex justify-between items-center w-full bg-transparent outline-none text-[#272727]"
                   onClick={() => toggleDropdown("category")}
                 >
-                  <span className="truncate w-[90px] md:w-auto">{selectedCategory}</span>
-                  <Image src="/images/arrow-down.svg" alt="Dropdown Icon" className=" ml-2" width={20} height={20}/>
+                  <span className="truncate w-[90px] md:w-auto text-sm md:text-base">{selectedCategory}</span>
+                  <Image src="/images/arrow-down.svg" alt="Dropdown Icon" className=" ml-2" width={12} height={12}/>
                 </button>
                 {openDropdown === "category" && (
                   <div className="absolute left-0 mt-2 w-[160px] md:w-[270px] bg-[#F3EDE7] border border-[#D8CBC4] rounded-lg shadow-lg z-10 p-2">
@@ -89,12 +89,12 @@ const HeroSection = () => {
                         setOpenDropdown(null);
                       }}
                     >
-                      Tech Gadgets, Phones, Laptops
+                      Tech Gadgets
                     </button>
                     <button
                       className="block w-full px-4 py-2 text-left hover:bg-[#e5d8cf] text-[#272727]"
                       onClick={() => {
-                        setSelectedCategory("electronics");
+                        setSelectedCategory("Electronics");
                         setOpenDropdown(null);
                       }}
                     >
@@ -103,7 +103,7 @@ const HeroSection = () => {
                     <button
                       className="block w-full px-4 py-2 text-left hover:bg-[#e5d8cf] text-[#272727]"
                       onClick={() => {
-                        setSelectedCategory("clothing");
+                        setSelectedCategory("Clothing");
                         setOpenDropdown(null);
                       }}
                     >
@@ -115,9 +115,8 @@ const HeroSection = () => {
             </div>
 
             {/* Second Row */}
-            <div className="mb-4 flex flex-row items-center bg-[#F2F2F2] border border-[#A5A5A5] rounded-lg p-3 w-full mt-4">
+            {/* <div className="mb-4 flex flex-row items-center bg-[#F2F2F2] border border-[#A5A5A5] rounded-lg p-3 w-full mt-4">
               
-              {/* Currency Dropdown */}
               <div className="relative w-1/2">
                 <button
                   type="button"
@@ -144,7 +143,6 @@ const HeroSection = () => {
 
               <div className="h-6 w-px bg-gray-900 mx-4 "></div>
 
-              {/* Amount Input */}
               <input
                 type="text"
                 className="bg-transparent outline-none text-[#272727] w-1/2"
@@ -152,7 +150,7 @@ const HeroSection = () => {
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
-            </div>
+            </div> */}
 
             {/* Submit Button */}
             <button className="mt-10 md:mt-5 w-full bg-[#C55938] text-white font-medium py-3 rounded-lg shadow-md hover:bg-[#b34b2f]">

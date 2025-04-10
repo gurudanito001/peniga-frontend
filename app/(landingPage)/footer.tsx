@@ -46,7 +46,7 @@ const Footer = () => {
             <div className="hidden sm:flex space-x-6 items-center">
               <Link href="/how-it-works">How It Works</Link>
               <span className="h-4 w-px bg-gray-500"></span>
-              <Link href="/services">Services</Link>
+              <Link href="/services">Why Choose Us</Link>
               <span className="h-4 w-px bg-gray-500"></span>
               <Link href="/faq">FAQ</Link>
             </div>
