@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaCrown } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import InsideNavbar from "./insideNavbar";
+import InsideNavbar from "../insideNavbar";
 
 
 const Home = () => {

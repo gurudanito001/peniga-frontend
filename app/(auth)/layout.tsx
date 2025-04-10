@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import '@/app/globals.css';
+import Navbar from "../(landingPage)/navbar";
+import Footer from "../(landingPage)/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,9 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Peniga | Forgot Password",
-  description: "Ensuring Safety and Security of Online Trade",
+export const metadata = {
+  title: 'Peniga | Auth',
+  description: 'Authentication for secure online trade',
 };
 
 export default function RootLayout({
@@ -27,7 +28,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100`}
       >
-        {children}
+        <main className="grid-background min-h-screen flex flex-col">
+          <Navbar />
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );

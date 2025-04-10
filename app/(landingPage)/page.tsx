@@ -13,14 +13,14 @@ export default function Home() {
     <div>
       <div className="grid-background">
         <Navbar />
-      <HeroSection/>
-      <div className="fading-effect"></div>
-      </div>
-      <InsuredBy/>
-      <HowItWorks/>
-      <WhyChooseUs/>
-      <FAQSection/>
-      <Footer />
+        <HeroSection/>
+        <div className="fading-effect"></div>
+        </div>
+        <InsuredBy/>
+        <HowItWorks/>
+        <WhyChooseUs/>
+        <FAQSection/>
+        <Footer />
       </div>     
   );
 }

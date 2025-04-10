@@ -1,13 +1,29 @@
 // lib/auth.ts
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export function requireAuth() {
-  const token = cookies().get('token')?.value;
+export async function requireAuth() {
+  const cookieStore = await cookies();
+  const headerStore = await headers();
+  const token = cookieStore.get('token')?.value;
 
   if (!token) {
-    redirect('/login');
+    console.log("does not have token");
+    const currentPath = headerStore.get('x-pathname') || '/';
+    redirect(`/login?redirectTo=${encodeURIComponent(currentPath)}`);
   }
 
   return token;
 }
+
+
+export async function getToken() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token')?.value;
+
+
+
+  return token;
+}
+
+

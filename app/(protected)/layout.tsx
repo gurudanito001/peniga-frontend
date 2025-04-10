@@ -1,17 +1,22 @@
+// app/(protected)/layout.tsx
+import { ReactNode } from 'react';
+import { requireAuth } from '../lib/auth';
 import {  Nunito } from "next/font/google";
 import '@/app/globals.css';
 //import InsideNavbar from "./insideNavbar";
-import Sidebar from "./sidebar";
-import BottomNav from "./bottomNav";
+import Sidebar from './sidebar';
+import BottomNav from './bottomNav';
 
 const nunito = Nunito({subsets: ["latin"],});
 
 
-export default function RootLayout({
+export default async function ProtectedLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
+
+  await requireAuth();
 
   return (
     <html className={`${nunito.className} bg-white`} >
@@ -21,14 +26,11 @@ export default function RootLayout({
             <Sidebar />
           </div>
           
-
           <main className="flex-1 bg-white  min-h-screen">
 
             <div className="drawer h-full">
               <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
               <div className="drawer-content flex flex-col h-full">
-                {/* Navbar */}
-                {/* <InsideNavbar /> */}
                 {children}
                 <BottomNav />
               </div>

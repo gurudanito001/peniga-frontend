@@ -1,8 +1,7 @@
-"use client"
 
 //import Image from "next/image";
 import ContractAgreement from "./contractAgreement"
-import InsideNavbar from "../../insideNavbar";
+import InsideNavbar from "@/app/(protected)/insideNavbar"
 import { FaEnvelope, FaComment, FaDownload, FaCheck, FaInfo } from "react-icons/fa"
 
 const Home = () => {

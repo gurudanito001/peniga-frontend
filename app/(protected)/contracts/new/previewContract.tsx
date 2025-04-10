@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
-import InsideNavbar from '../../insideNavbar';
+import InsideNavbar from '@/app/(protected)/insideNavbar';
 import { XMarkIcon } from '@heroicons/react/16/solid';
 import Link from 'next/link';
 import Image from 'next/image';

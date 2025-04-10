@@ -9,7 +9,7 @@ const SignUpForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 items-center justify-center px-4 md:px-12 max-w-7xl mx-auto gap-4 mt-10">
+    <div className="grid grid-cols-1 lg:grid-cols-5 items-center justify-center px-4 md:px-12 max-w-7xl mx-auto gap-4 mt-10 mb-20">
       {/* Left Side - Image (Hidden on Mobile) */}
       <div className="hidden lg:flex col-span-3 h-full">
         <Image
@@ -29,8 +29,7 @@ const SignUpForm = () => {
             background: "linear-gradient(to bottom, #FFF8F3, #E4CABF)",
           }}
         >
-          <h2 className="text-2xl font-semibold text-[#272727] mb-2">Peniga</h2>
-          <h3 className="text-xl font-medium text-[#272727] mb-4">Create Account</h3>
+          <h2 className="text-2xl font-semibold text-[#272727] mb-2">Create Account</h2>
 
           {/* Form */}
           <form className="mt-4 space-y-4">

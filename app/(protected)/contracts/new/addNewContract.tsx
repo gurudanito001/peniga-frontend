@@ -1,6 +1,6 @@
 'use client'
 
-import InsideNavbar from "../../insideNavbar";
+import InsideNavbar from "@/app/(protected)/insideNavbar";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
 import Image from "next/image";

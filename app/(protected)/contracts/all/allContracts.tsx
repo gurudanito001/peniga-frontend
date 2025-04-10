@@ -7,7 +7,7 @@
 
 import { FaUserCircle } from "react-icons/fa";
 import Link from "next/link";
-import InsideNavbar from "../../insideNavbar";
+import InsideNavbar from "@/app/(protected)/insideNavbar";
 
 const AllContracts = () => {
   const contracts = [

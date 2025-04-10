@@ -11,11 +11,11 @@ const Navbar = () => {
     <nav className="flex justify-center items-center py-10 relative">
       {/* Desktop Navbar */}
       <div className="hidden md:flex items-center space-x-6 px-6 py-2 rounded-lg bg-[#FAF9F8] border border-[#E0E0E0]">
-        <h1 className="text-xl font-bold text-[#272727] flex items-center">Peniga <div className="border-r-2 border-gray-900 h-6 w-px ml-4"></div></h1>
+        <Link href="/" className="text-xl font-bold text-[#272727] flex items-center">Peniga <div className="border-r-2 border-gray-900 h-6 w-px ml-4"></div></Link>
 
         <ul className="flex items-center space-x-6 p-0 m-0 text-[#272727] font-medium">
           <li className="cursor-pointer hover:text-[#C55938]">How it works</li>
-          <li className="cursor-pointer hover:text-[#C55938]">Services</li>
+          <li className="cursor-pointer hover:text-[#C55938]">Why Choose Us</li>
           <li className="cursor-pointer hover:text-[#C55938] flex items-center">FAQ <div className="h-6 w-px border-gray-900 ml-4 border-r-2"></div></li>
         </ul>
           
@@ -64,7 +64,7 @@ const Navbar = () => {
             className="cursor-pointer text-[#272727] font-medium hover:text-[#C55938] border-b border-[#606060] pb-2"
             onClick={() => setIsOpen(false)}
           >
-            Services
+            Why Choose Us
           </a>
           <a
             className="cursor-pointer text-[#272727] font-medium hover:text-[#C55938]"
