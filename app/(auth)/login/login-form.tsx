@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Link from "next/link";
@@ -37,26 +38,21 @@ const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-
+  
     try {
       setLoading(true);
       setError(null);
-
-      // Call the internal API route
-      axios.post("/api/auth/login", { email, password })
-        .then(res => {
-          setError("")
-          setSuccess(res.data.message)
-          router.push( redirectTo || "/dashboard")
-        }).catch(error => {
-          setSuccess("")
-          setError(error.response.data.message)
-        })
-
-    } catch (err) {
-      console.log(err)
+      setSuccess(null);
+  
+      const res = await axios.post("/api/auth/login", { email, password });
+      
+      setError("");
+      setSuccess(res.data.message);
+      router.push(redirectTo || "/dashboard");
+    } catch (error: any) {
+      setSuccess("");
+      setError(error?.response?.data?.message || "Login failed.");
     } finally {
-      console.log(loading, "djjhdhg")
       setLoading(false);
     }
   };
