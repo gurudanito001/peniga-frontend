@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const WhyChooseUs = () => {
   return (
-    <section className="w-full px-6 md:px-16 py-16 bg-white">
+    <section className="w-full px-6 md:px-16 py-16 bg-white" id="why-choose-us">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-left mb-12">
@@ -16,9 +17,9 @@ const WhyChooseUs = () => {
         At Peniga, we&apos;ve created a secure and reliable bridge between buyers and sellers, ensuring both parties stay accountable throughout every transaction.
         </p>
 
-        <button className="px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition mt-4">
+        <Link href="/sign-up" className="btn px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition mt-6">
           Get Started
-        </button>
+        </Link>
       </div>
 
 

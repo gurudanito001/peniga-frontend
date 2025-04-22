@@ -61,7 +61,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-16 px-6 md:px-16">
+    <section className="py-16 px-6 md:px-16" id="faq">
       <div className="max-w-3xl mx-auto text-center">
       <button className="px-4 py-1 md:px-6 md:py-2 border-2 border-[#C55938] text-[#C55938] rounded-full font-medium hover:bg-[#C55938] hover:text-white transition">
           Frequently Asked Questions

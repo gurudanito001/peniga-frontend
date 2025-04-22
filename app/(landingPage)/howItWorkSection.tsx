@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const HowItWorks = () => {
     return (
-        <section className="max-w-6xl mx-auto px-6 pb-24">
+        <section className="max-w-6xl mx-auto px-6 pb-24" id="how-it-works">
             {/* Heading Section */}
             <div className="text-left mb-12">
                 <button className="px-4 py-1 md:px-6 md:py-2 border-2 border-[#C55938] text-[#C55938] rounded-full font-medium hover:bg-[#C55938] hover:text-white transition">
@@ -16,9 +17,9 @@ const HowItWorks = () => {
                     Buy and sell with confidence, knowing your transactions are secure, fast, and backed by expert support.
                 </p>
 
-                <button className="px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition mt-6">
+                <Link href="/sign-up" className="btn px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition mt-6">
                     Get Started
-                </button>
+                </Link>
             </div>
 
             {/* Steps Grid */}

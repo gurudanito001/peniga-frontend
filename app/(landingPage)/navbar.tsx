@@ -14,15 +14,18 @@ const Navbar = () => {
         <Link href="/" className="text-xl font-bold text-[#272727] flex items-center">Peniga <div className="border-r-2 border-gray-900 h-6 w-px ml-4"></div></Link>
 
         <ul className="flex items-center space-x-6 p-0 m-0 text-[#272727] font-medium">
-          <li className="cursor-pointer hover:text-[#C55938]">How it works</li>
-          <li className="cursor-pointer hover:text-[#C55938]">Why Choose Us</li>
-          <li className="cursor-pointer hover:text-[#C55938] flex items-center">FAQ <div className="h-6 w-px border-gray-900 ml-4 border-r-2"></div></li>
+          <Link href="#how-it-works" className="cursor-pointer hover:text-[#C55938]">How it works</Link>
+          <Link href="/#why-choose-us" className="cursor-pointer hover:text-[#C55938]">Why Choose Us</Link>
+          <Link href="/#faq" className="cursor-pointer hover:text-[#C55938] flex items-center">FAQ <div className="h-6 w-px border-gray-900 ml-4 border-r-2"></div></Link>
         </ul>
           
-        <Link href="/sign-up">
+        {/* <Link href="/sign-up">
         <button className="px-4 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D]">
         Get Started
         </button>
+        </Link> */}
+        <Link href="/sign-up" className="btn px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition">
+          Get Started
         </Link>
       </div>
 
@@ -54,33 +57,42 @@ const Navbar = () => {
         </div>
 
         <div className="flex flex-col space-y-4 text-left">
-          <a
+          <Link
+            href="#how-it-works"
             className="cursor-pointer text-[#272727] font-medium hover:text-[#C55938] border-b border-[#606060] pb-2"
             onClick={() => setIsOpen(false)}
           >
             How it works
-          </a>
-          <a
+          </Link>
+          <Link
+            href="/#why-choose-us"
             className="cursor-pointer text-[#272727] font-medium hover:text-[#C55938] border-b border-[#606060] pb-2"
             onClick={() => setIsOpen(false)}
           >
             Why Choose Us
-          </a>
-          <a
+          </Link>
+          <Link
+             href="/#faq"
             className="cursor-pointer text-[#272727] font-medium hover:text-[#C55938]"
             onClick={() => setIsOpen(false)}
           >
             FAQ
-          </a>
+          </Link>
         </div>
 
-         <Link href="/sign-up">
-        <button
-          className="w-full px-4 py-3 mt-6 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition"
+        {/* <Link
+          href="/sign-up"
+          className="btn w-full px-4 py-3 mt-6 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition"
           onClick={() => setIsOpen(false)}
         >
           Get Started
-        </button>
+        </Link> */}
+        <Link 
+          href="/sign-up" 
+          className="btn px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition mt-6 text-base"
+          onClick={() => setIsOpen(false)}
+        >
+          Get Started
         </Link>
       </div>
 

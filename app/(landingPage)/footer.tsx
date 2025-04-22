@@ -44,17 +44,17 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6">
             {/* Navigation */}
             <div className="hidden sm:flex space-x-6 items-center">
-              <Link href="/how-it-works">How It Works</Link>
+              <Link href="#how-it-works">How It Works</Link>
               <span className="h-4 w-px bg-gray-500"></span>
-              <Link href="/services">Why Choose Us</Link>
+              <Link href="#why-choose-us">Why Choose Us</Link>
               <span className="h-4 w-px bg-gray-500"></span>
-              <Link href="/faq">FAQ</Link>
+              <Link href="#faq">FAQ</Link>
             </div>
 
             {/* Get Started Button */}
-            <button className="bg-[#C55938] text-white font-medium border-[#C55938] mt-4 w-[106px] h-[44px] rounded-lg md:mt-0">
+            <Link href="/sign-up" className="btn px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition">
               Get Started
-            </button>
+            </Link>
           </div>
         </div>
       </div>
