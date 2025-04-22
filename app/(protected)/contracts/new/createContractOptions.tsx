@@ -4,49 +4,44 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 
-const HeroSection = () => {
+const CreateContractOptions = () => {
+
+
   const router = useRouter();
   const [contractRole, setContractRole] = useState("buyer");
   const [contractType, setContractType] = useState("techGadgets");
   const [error, setError] = useState("");
 
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
-  const handleChangeRole = (event: React.ChangeEvent<HTMLSelectElement>)=>{
+  const handleChangeRole = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setContractRole(event.target.value);
   }
 
-  const handleChangeContractType = (event: React.ChangeEvent<HTMLSelectElement>)=>{
+  const handleChangeContractType = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setContractType(event.target.value);
   }
 
 
-  const handleSubmit = ()=>{
+  const handleSubmit = () => {
     setError("")
-    if(!contractRole || !contractType){
+    if (!contractRole || !contractType) {
       return setError("Contract Role and Contract Type are required")
     }
     router.push(`/contracts/new?role=${contractRole}&type=${contractType}`)
   }
 
-  return (
-    <section className="w-full flex items-center justify-center mt-8" onClick={()=> openDropdown && setOpenDropdown(null)}>
-      <div className="max-w-2xl w-full mx-auto text-center px-6">
-        {/* Heading */}
-        <h1 className="text-2xl md:text-4xl font-bold text-[#272727] lg:text-nowrap">
-          Scam-Free Transactions, Every Time!
-        </h1>
-        <p className="text-[#272727] mt-3">
-          Our escrow protection keeps your money and goods safe until both parties are satisfied.
-        </p>
 
+  return (
+    <section className="w-full h-full flex">
+        
         {/* Form Container */}
-        <div className="mt-16 max-w-4xl mx-auto bg-[#F3EDE7] p-6  rounded-lg border border-[#D8CBC4] lg:max-w-2xl flex items-center">
+        <div className="w-full max-w-4xl m-auto bg-[#F3EDE7] p-6 rounded-lg border border-[#D8CBC4] lg:max-w-2xl flex items-center">
           <form className="rounded-2xl md:p-6 w-full mx-auto mt-5 md:mt-0">
-            
+
             {/* First Row */}
             <div className="mb-4 flex flex-col items-center bg-transparent p-3 w-full">
-              
+
+              <h3 className="text-2xl font-semibold mb-4">Create Contract Options</h3>
+
               {/* Transaction Type Dropdown */}
 
               <label className="form-control w-full mb-2">
@@ -77,16 +72,16 @@ const HeroSection = () => {
             </div>
             <div className="text-sm font-semibold text-center text-red-700">{error}</div>
             {/* Submit Button */}
-            <button type="button" onClick={handleSubmit} className="mt-10 md:mt-5 w-full bg-[#C55938] text-white font-medium py-3 rounded-lg shadow-md hover:bg-[#b34b2f]">
+            <button type="button" onClick={handleSubmit} className="mt-10 md:mt-5 w-full h-16 bg-[#C55938] text-white font-medium py-3 rounded-lg shadow-md hover:bg-[#b34b2f]">
               Create Contract
             </button>
           </form>
         </div>
 
-        
-      </div>
-    </section>
-  );
-};
 
-export default HeroSection;
+    </section>
+  )
+}
+
+
+export default CreateContractOptions;

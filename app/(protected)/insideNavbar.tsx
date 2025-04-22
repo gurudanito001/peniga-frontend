@@ -27,7 +27,7 @@ const InsideNavbar = () => {
             <a className='hover:bg-transparent'>
               <div className="indicator">
                 <FaBell fontSize={16} />
-                <span className="badge badge-xs badge-primary indicator-item text-black"></span>
+                <span className="badge badge-xs badge-primary indicator-item text-black z-0"></span>
               </div>
             </a>
           </li>

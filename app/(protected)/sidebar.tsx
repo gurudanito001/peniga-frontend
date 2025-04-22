@@ -33,7 +33,7 @@ const Sidebar = () => {
     <aside className={`menu flex flex-col bg-[#025253] min-h-screen sticky w-72`}>
       {/* Sidebar content here */}
       <h1 className="text-xl font-bold mb-6 p-4">
-        {<span className='flex items-center gap-3'><Image src="/images/escrow-logo-nobg.png" alt="home" width={40} height={40} /> Peniga</span>}
+        {<Link href="/" className='flex items-center gap-3'><Image src="/images/escrow-logo-nobg.png" alt="home" width={40} height={40} /> Peniga</Link>}
       </h1>
       <nav className="flex flex-col grow">
         <Link href="/dashboard" className={`rounded-lg p-4 font-semibold flex hover:text-indigo-400 justify-start`}>

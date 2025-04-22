@@ -1,0 +1,65 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { NextResponse } from 'next/server';
+import { API_URL } from '@/app/utils/consts';
+import { getToken } from '@/app/lib/auth';
+
+
+export async function POST(request: Request) {
+  try {
+    const payload = await request.json();
+    const token = await getToken();
+
+    const response = await fetch(`${API_URL.base_url}/contract`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return NextResponse.json({ ...errorData }, { status: response.status });
+    }
+
+    const data = await response.json();
+    console.log(data)
+
+
+    return NextResponse.json({ message: 'Contract Created successfully' }, { status: response.status });
+  } catch (error: any) {
+    console.error("Login error:", error);
+    return NextResponse.json({ message: 'Internal server error', }, { status: 500 });
+  }
+}
+
+export async function GET(request: Request) {
+  
+  const payload = await request.json();
+  console.log(payload);
+  try {
+    const token = await getToken();
+    console.log("Token:", token);
+    const response = await fetch(`${API_URL.base_url}/contract`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return NextResponse.json({ ...errorData }, { status: response.status });
+    }
+
+    const data = await response.json();
+    console.log(data)
+    return NextResponse.json({ message: 'Contracts fetched successfully' }, { status: response.status });
+
+  } catch (error: any) {
+    console.error("Login error:", error);
+    return NextResponse.json({ message: 'Internal server error', }, { status: 500 });
+  }
+}

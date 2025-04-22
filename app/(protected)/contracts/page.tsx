@@ -7,10 +7,14 @@ import { FaCrown } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import InsideNavbar from "../insideNavbar";
 import ContractItem from "./contractItem";
+import { getToken } from "@/app/lib/auth";
 
 
-const ContractsDashboard = () => {
-
+const ContractsDashboard = async () => {
+  const token = await getToken();
+  console.log("Token from ContractsDashboard", token);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/api/contract`);
+  console.log(res);
   const categories = [
     {
       name: "Sales",
@@ -46,13 +50,11 @@ const ContractsDashboard = () => {
     <section className="flex flex-col text-neutral h-screen bg-[#E8F5E9] md:px-6 overflow-y-auto">
       <InsideNavbar />
       <header className="text-2xl font-bold mb-5 flex items-center w-full mt-5 px-5">
-        <span className="text-[#272727]">Contracts</span> <Link href="/dashboard/contracts/new" className="ml-auto px-4 py-2 bg-[#272727] text-white rounded-md text-sm">Create Contract</Link>
+        <span className="text-[#272727]">Contracts</span> <Link href="/contracts/new" className="ml-auto px-4 py-2 bg-[#272727] text-white rounded-md text-sm">Create Contract</Link>
       </header>
 
       <div className="border-b border-gray-300 w-full mb-5"></div>
       <div className="">
-        <h2 className="text-lg font-semibold mb-3 px-5">Categories</h2>
-
         <div className="bg-gray-100 p-6 rounded-lg">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {categories.map((category, index) => (
