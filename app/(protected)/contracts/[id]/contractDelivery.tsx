@@ -2,19 +2,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import Image from 'next/image';
 import { useState } from 'react';
 import { Contract } from '@/app/utils/interfaces';
-import moment from 'moment';
-import { formatAsCurrency } from '@/app/lib/funcs';
 import axios from 'axios';
 import { ArrayOfStages } from "@/app/lib/funcs";
 import { FaCheck } from "react-icons/fa";
-import { getTotalCostOfProducts } from '@/app/lib/funcs';
+import { useRouter } from 'next/navigation';
 
 
 const ContractDelivery = ({ contract }: { contract: Contract }) => {
-
+  const router = useRouter();
   const [agreeToTerms, setAgreeToTerms] = useState(false);
 
   //const [error, setError] = useState<string | null>(null);
@@ -28,14 +25,9 @@ const ContractDelivery = ({ contract }: { contract: Contract }) => {
 
     try {
       setLoading(true);
-      //setError(null);
-      //setSuccess(null);
-      const res = await axios.patch(`/api/contract/${contract.id}`, { stage: "AGREED" });
-      console.log(res)
-      //setSuccess(res.data.message);
+      const res = await axios.patch(`/api/contract/${contract.id}`, { stage: "DELIVERED" });
+      router.refresh();
     } catch (error: any) {
-      //setSuccess("");
-      //setError(error?.response?.data?.message || "Login failed.");
     } finally {
       setLoading(false);
     }
@@ -53,7 +45,7 @@ const ContractDelivery = ({ contract }: { contract: Contract }) => {
 
         <p>Waiting for buyer to confirm that he has received the package</p>
 
-        <button type="button" className="btn btn-wide btn-secondary text-[#272727] mt-7"> I have received the package </button>
+        <button type="button" className="btn btn-wide btn-secondary text-[#272727] mt-7" disabled={loading} onClick={handleConfirmDelivery}> I have received the package </button>
       </div>
     </div>
   )

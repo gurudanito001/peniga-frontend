@@ -2,19 +2,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import Image from 'next/image';
 import { useState } from 'react';
 import { Contract } from '@/app/utils/interfaces';
-import moment from 'moment';
-import { formatAsCurrency } from '@/app/lib/funcs';
 import axios from 'axios';
 import { ArrayOfStages } from "@/app/lib/funcs";
 import { FaCheck } from "react-icons/fa";
-import { getTotalCostOfProducts } from '@/app/lib/funcs';
+import { useRouter } from 'next/navigation';
 
 
 const ContractApproval = ({ contract }: { contract: Contract }) => {
-
+  const router = useRouter();
   const [agreeToTerms, setAgreeToTerms] = useState(false);
 
   //const [error, setError] = useState<string | null>(null);
@@ -25,17 +22,12 @@ const ContractApproval = ({ contract }: { contract: Contract }) => {
 
 
   const handleApprovePayment = async () => {
-
     try {
       setLoading(true);
-      //setError(null);
-      //setSuccess(null);
-      const res = await axios.patch(`/api/contract/${contract.id}`, { stage: "AGREED" });
+      const res = await axios.patch(`/api/contract/${contract.id}`, { stage: "INSPECTED" });
       console.log(res)
-      //setSuccess(res.data.message);
+      router.refresh();
     } catch (error: any) {
-      //setSuccess("");
-      //setError(error?.response?.data?.message || "Login failed.");
     } finally {
       setLoading(false);
     }
@@ -59,7 +51,7 @@ const ContractApproval = ({ contract }: { contract: Contract }) => {
             <span className='text-base'>I agree that the delivered products satisfy the conditions on the contract</span>
           </label>
 
-          <button className="btn btn-wide h-9 text-gray-400 font-semibold btn-accent text-base">I Agree</button>
+          <button className="btn btn-wide h-9 text-gray-400 font-semibold btn-accent text-base" disabled={loading} onClick={handleApprovePayment}>I Agree</button>
         </div>
       </div>
     </div>

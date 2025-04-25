@@ -102,7 +102,7 @@ const Home = async({ params }: PageParams) => {
                 <span className={`flex border ${ArrayOfStages.indexOf(contract?.stage as string) >= -1  ? "bg-secondary text-white" : "border-secondary text-secondary"} items-center justify-center w-8 h-8 rounded-full text-xl mr-2`}>
                   {ArrayOfStages.indexOf(contract?.stage as string) > -1  ? <FaCheck fontSize={14} /> : 1}
                 </span>
-                Create a Contract
+                Create Contract
               </div>
               <div className="collapse-content text-sm">Contract has been created</div>
             </div>

@@ -11,10 +11,11 @@ import axios from 'axios';
 import { ArrayOfStages } from "@/app/lib/funcs";
 import { FaCheck } from "react-icons/fa";
 import { getTotalCostOfProducts } from '@/app/lib/funcs';
+import { useRouter } from 'next/navigation';
 
 
 const ContractAgreement = ({contract}: {contract: Contract}) =>{
-  
+  const router = useRouter();
   const [agreeToTerms, setAgreeToTerms] = useState(false);
 
   //const [error, setError] = useState<string | null>(null);
@@ -28,14 +29,10 @@ const ContractAgreement = ({contract}: {contract: Contract}) =>{
   
     try {
       setLoading(true);
-      //setError(null);
-      //setSuccess(null);
       const res = await axios.patch(`/api/contract/${contract.id}`, {stage: "AGREED"});
       console.log(res)
-      //setSuccess(res.data.message);
+      router.refresh();
     } catch (error: any) {
-      //setSuccess("");
-      //setError(error?.response?.data?.message || "Login failed.");
     } finally {
       setLoading(false);
     }
