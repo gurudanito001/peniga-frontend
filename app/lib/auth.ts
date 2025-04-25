@@ -11,13 +11,26 @@ import { userTokenData } from '../utils/interfaces';
 
 export async function requireAuth() {
   const cookieStore = await cookies();
-  const headerStore = await headers();
+  //const headerStore = await headers();
   const token = cookieStore.get('token')?.value;
 
-  if (!token) {
+  /* if (!token) {
     console.log("does not have token");
     const currentPath = headerStore.get('x-pathname') || '/';
     redirect(`/login?redirectTo=${encodeURIComponent(currentPath)}`);
+  } */
+
+  if (!token) {
+    console.log("does not have token");
+    const headerStore = await headers();
+    const currentPath = headerStore.get('x-pathname') || '/';
+    const searchParams = headerStore.get('x-search-params') || ''; // Get the search params
+    console.log("from require auth", currentPath, searchParams)
+    const redirectToPath = `/login?redirectTo=${encodeURIComponent(
+      currentPath + (searchParams ? `?${searchParams}` : '')
+    )}`;
+  
+    redirect(redirectToPath);
   }
 
   return token;

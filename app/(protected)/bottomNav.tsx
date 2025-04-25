@@ -9,7 +9,6 @@ import { FaChartLine, FaFileSignature, FaUsers } from "react-icons/fa";
 
 const BottomNav = () => {
   const pathname = usePathname();
-  console.log(pathname)
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full bg-neutral-100 border-t py-2 flex justify-around items-center md:hidden">
       <Link href="/dashboard" className="flex flex-col items-center gap-1">

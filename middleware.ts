@@ -2,10 +2,13 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const response = NextResponse.next();
+  const pathname = request.nextUrl.pathname;
+  const search = request.nextUrl.search.slice(1); // Remove the leading '?'
 
-  // Inject current pathname into headers
-  response.headers.set('x-pathname', request.nextUrl.pathname);
+  const response = NextResponse.next();
+  response.headers.set('x-pathname', pathname);
+  response.headers.set('x-search-params', search);
+
   return response;
 }
 

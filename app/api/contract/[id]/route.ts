@@ -8,10 +8,12 @@ import { getToken } from '@/app/lib/auth';
 
 
 interface Params {
-  id: string;
+  params: Promise<{
+    id: string;
+  }>;
 }
 
-export async function GET(request: Request, { params }: { params: Params }) {
+export async function GET(request: Request, { params }: Params) {
   try {
     const {id: contractId} = await params;
     const { searchParams } = new URL(request.url);
@@ -42,7 +44,7 @@ export async function GET(request: Request, { params }: { params: Params }) {
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  {params}: Params
 ) {
   try {
     const {id: contractId} = await params;

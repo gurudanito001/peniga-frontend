@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 //import Image from "next/image";
@@ -17,10 +18,11 @@ import { ArrayOfStages } from "@/app/lib/funcs";
 
 
 interface PageParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
+
 
 const Home = async({ params }: PageParams) => {
 

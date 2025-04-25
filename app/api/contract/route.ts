@@ -38,7 +38,7 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-  const token = searchParams.get('token');
+    const token = searchParams.get('token');
     const response = await fetch(`${API_URL.base_url}/contract`, {
       method: "GET",
       headers: {
