@@ -4,6 +4,10 @@
 
 import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
+import jwt from 'jsonwebtoken';
+import { userTokenData } from '../utils/interfaces';
+
+
 
 export async function requireAuth() {
   const cookieStore = await cookies();
@@ -22,10 +26,17 @@ export async function requireAuth() {
 
 export async function getToken() {
   const cookieStore = await cookies();
-  console.log("Cookie Store:", Object.fromEntries(cookieStore.getAll().map(c => [c.name, c.value])));
   const token = cookieStore.get('token')?.value;
-  console.log("Token:", token);
   return token;
+}
+
+
+export async function getUserData(){
+  
+  const token = await getToken() as string ;
+  const userData = jwt.decode(token) as userTokenData;
+
+  return userData;
 }
 
 

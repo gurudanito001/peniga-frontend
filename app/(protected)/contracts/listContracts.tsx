@@ -1,29 +1,26 @@
-
-import { FaFileSignature, } from "react-icons/fa";
+import Link from "next/link";
+import { FaFileSignature } from "react-icons/fa";
 import { Contract } from "@/app/utils/interfaces";
 import moment from "moment";
-import InsideNavbar from "@/app/(protected)/insideNavbar";
 import { truncateText, truncateMiddle } from "@/app/lib/funcs";
 
-const AllContracts = ({contracts = []}: {contracts?: Contract[]}) => {
+const ListContracts = ({contracts = []}: {contracts?: Contract[]}) => {
+
+
   
-
-
-
-
-
   return (
-    <section className=" bg-[#E8F5E9] h-screen  overflow-y-auto w-full">
-      <InsideNavbar/>
-      <div className="mx-auto flex flex-col px-5 lg:px-12 mt-7">
-        <div className=" mb-5 flex items-center justify-between">
-          <h1 className="font-bold text-2xl">All Contracts</h1>
+    <div className="p-4">
+        <div className="flex justify-between items-center mb-4 mt-10">
+          <h2 className="text-lg font-semibold">Your Contracts</h2>
+          <div className="space-x-5">
+            <Link href="/contracts/all"><button className="btn btn-link px-4 py-2 rounded-md">View All</button></Link>
+          </div>
         </div>
 
         {contracts.map((contract) => (
-          <div key={contract?.id}>
+          <Link href={`/contracts/${contract.id}`} key={contract?.id}>
             <div
-              className="bg-gray-100 p-4 mb-4 rounded-lg shadow hidden md:flex justify-evenly items-center gap-3"
+              className="bg-gray-100 hover:bg-slate-200 p-4 mb-4 rounded-lg shadow hidden md:flex justify-evenly items-center gap-3"
             >
               <div className="flex items-center w-2/6 min-w-0"> {/* Fixed width for title */}
                 <FaFileSignature className="bg-secondary p-2 rounded-sm text-4xl text-white" />
@@ -48,7 +45,7 @@ const AllContracts = ({contracts = []}: {contracts?: Contract[]}) => {
                     {contract.buyerId === contract.userId ? `${contract?.seller?.firstName[0]} ${contract?.seller?.lastName[0]}` : contract.toBeInformed?.email[0]}
                   </span>
                   <div className="text-xs font-semibold text-[#272727] ml-1 text-ellipsis overflow-hidden whitespace-nowrap">
-                    {contract.buyerId === contract.userId ? truncateMiddle(`${contract?.seller?.firstName} ${contract?.seller?.lastName}`) : truncateMiddle(contract.toBeInformed?.email)}
+                    {contract.buyerId === contract.userId ? truncateMiddle(`${contract?.seller?.firstName} ${contract?.seller?.lastName}`) : truncateMiddle(contract.toBeInformed?.email) }
                   </div>
                 </div>
               </div>
@@ -68,67 +65,10 @@ const AllContracts = ({contracts = []}: {contracts?: Contract[]}) => {
             </div>
 
             {/* ... mobile layout ... */}
-          </div>
+          </Link>
         ))}
-      </div>
-    </section>
+    </div>
   );
 };
 
-export default AllContracts;
-
-/* const ContractItem = () =>{
-
-  return(
-    <li className="p-4 flex items-start gap-2 border-b bg-slate-400 lg:hidden">
-      <article className="w-full">
-        <header className="flex items-center">
-          <h4 className="text-sm font-semibold">Buying cargo of goods from Italy</h4>
-          <span className="loading loading-ring font-bold text-success ml-auto"></span>
-        </header>
-        <p className="text-neutral-500 text-xs"> <span className="font-semibold">Michael Onuoha</span> <span className="ml-1">(Buyer)</span></p>
-        <p className="flex items-center text-xs mt-2 text-neutral-400">
-          <span>Paid</span> <span className="text-xl font-semibold flex items-center px-1 h-2 mb-1">.</span>
-          <span>₦2,700,000</span>
-          <span>2 days inspection</span>
-          <span className="ml-auto">Last Updated {new Date().toLocaleDateString()}</span>
-        </p>
-      </article>
-    </li>
-  )
-} */
-
-
-
-/* const AllContracts = () =>{
-
-  return (
-    <aside className={`w-full md:max-w-max pt-10 hidden lg:block`}>
-      <header className=" text-2xl font-bold mb-5 px-3 lg:px-5 flex items-center w-full">
-        <span>Contracts</span>
-        <Link href="" className="ml-auto"> <DocumentPlusIcon className="w-6" /></Link>
-      </header>
-
-      <ul className="max-h-full overflow-y-auto pb-24">
-          
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-        <ContractItem />
-      </ul>
-    </aside>
-  )
-}
-
-export default AllContracts */
+export default ListContracts;

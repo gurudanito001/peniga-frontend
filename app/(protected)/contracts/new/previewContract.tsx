@@ -2,35 +2,12 @@
 
 import InsideNavbar from '@/app/(protected)/insideNavbar';
 import Image from 'next/image';
+import { Contract } from '@/app/utils/interfaces';
 
 
 
 
-interface ContractItem {
-    id: number;
-    itemName: string;
-    price: string;
-    quantity: string;
-    description: string;
-    image: string;
-}
-
-interface ContractState {
-    buyerId?: string;
-    sellerId?: string;
-    title: string;
-    inspectionPeriod: number;
-    escrowFeePaidBy: 'seller' | 'buyer' | 'split';
-    agreementTerms: string[];
-    toBeInformed: {
-        email: string;
-    };
-    contractItems: ContractItem[];
-}
-
-
-
-const PreviewContract = ({contractDetails, setCurrentScreen, handleSubmit, isLoading}: {contractDetails: ContractState, setCurrentScreen: (screen: string)=>void, handleSubmit: ()=>void, isLoading: boolean}) => {
+const PreviewContract = ({contractDetails, setCurrentScreen, handleSubmit, isLoading}: {contractDetails: Contract, setCurrentScreen: (screen: string)=>void, handleSubmit: ()=>void, isLoading: boolean}) => {
 
     if (!contractDetails) {
         return null
@@ -78,19 +55,19 @@ const PreviewContract = ({contractDetails, setCurrentScreen, handleSubmit, isLoa
                     </header>
                     {/* Contract Items List */}
                     <ul className="space-y-4 max-w-2xl">
-                        {contractDetails.contractItems.map((product) => (
+                        {contractDetails?.contractItems?.map((product) => (
                             <li
                                 key={product.id}
                                 className="border-b py-4 flex flex-row items-center justify-between gap-10 flex-wrap"
                             >
                                 {/* Image */}
-                                <Image
+                                {product?.image &&<Image
                                     alt="Product Image"
                                     width={80}
                                     height={80}
-                                    src={product.image}
+                                    src={product?.image}
                                     className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg object-cover"
-                                />
+                                />}
 
                                 {/* Product Details */}
                                 <div className="flex-1 flex flex-col items-start text-left">
@@ -99,12 +76,12 @@ const PreviewContract = ({contractDetails, setCurrentScreen, handleSubmit, isLoa
                                 </div>
 
                                 {/* Quantity & Price */}
-                                <div className="flex flex-col items-center gap-4">
+                                {product?.quantity && product?.price &&<div className="flex flex-col items-center gap-4">
                                     <span> <strong>{product.quantity}</strong> unit(s)</span>
                                     <p className="font-semibold text-gray-700">
-                                        NGN{(parseInt(product?.quantity) * parseInt(product.price)).toFixed(2)}
+                                        NGN{(parseInt(product?.quantity.toString()) * parseInt(product.price.toString())).toFixed(2)}
                                     </p>
-                                </div>
+                                </div>}
                             </li>
                         ))}
                     </ul>
@@ -121,7 +98,7 @@ const PreviewContract = ({contractDetails, setCurrentScreen, handleSubmit, isLoa
 
 
                     <ul className="list list-disc list-outside flex flex-col gap-2">
-                        {contractDetails?.agreementTerms.map( (item, index) =>{
+                        {contractDetails?.agreementTerms?.map( (item: string, index: number) =>{
                             return (
                                 <li key={`${item}-${index}`} className="list-item">
                                     <span className="inline-block border border-neutral-400 px-4 py-3 text-sm rounded-md w-full shadow text-[#272727]">

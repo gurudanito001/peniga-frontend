@@ -11,10 +11,9 @@ import PreviewContract from './previewContract';
 import jwt from 'jsonwebtoken';
 import axios from "axios";
 
+import { Contract, ContractItem, userTokenData } from '@/app/utils/interfaces';
 
-
-
-interface ContractItem {
+/* interface ContractItem {
   id: number;
   itemName: string;
   price: string;
@@ -43,7 +42,7 @@ interface userTokenData {
   type: string
   userId: string
 }
-
+ */
 
 
 const AddNewContract = ({token}: {token: string}) => {
@@ -54,7 +53,8 @@ const AddNewContract = ({token}: {token: string}) => {
 
   const [currentScreen, setCurrentScreen] = useState("")
 
-  const [contract, setContract] = useState<ContractState>({
+  const [contract, setContract] = useState<Contract>({
+    userId: "",
     title: '',
     inspectionPeriod: 1,
     escrowFeePaidBy: 'seller',
@@ -74,22 +74,74 @@ const AddNewContract = ({token}: {token: string}) => {
     id: Date.now(), // Temporary ID for new items
   });
 
+  const validateContract = () => {
+
+    if (!contract.userId) {
+      return 'User Id cannot be empty';
+    }
+
+    if (!contract.buyerId && !contract.sellerId) {
+      return 'Either Buyer ID or Seller ID must be filled.';
+    }
+
+    if (!contract.title) {
+      return 'Contract title is required';
+    }
+  
+    if (contract.escrowFeePaidBy !== 'buyer' && contract.escrowFeePaidBy !== 'seller') {
+      return 'Escrow Fee Paid By must be either "buyer" or "seller".';
+    }
+  
+    if (typeof contract.inspectionPeriod !== 'number' || contract.inspectionPeriod < 1) {
+      return 'Inspection Period is required';
+    }
+
+    if (contract.agreementTerms.length === 0) {
+      return 'Agreement Terms must contain at least one condition.';
+    }
+
+    if (contract?.contractItems?.length === 0) {
+      return 'Contract must contain at least one product.';
+    }
+
+    if (!isValidEmail(contract.toBeInformed.email)) {
+      return 'To Be Informed Email must be a valid email address.';
+    }
+  
+    return null; // No validation errors
+  };
+
+  const isValidEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
 
   useEffect(()=>{
+    console.log(userData, role)
+    if(!role && !type){
+      return
+    }
     if(userData.userId && role){
       if(role === "buyer"){
         setContract( prev =>({
           ...prev,
-          buyerId: userData.userId
+          sellerId: "",
+          buyerId: userData.userId,
+          userId: userData.userId,
+          escrowFeePaidBy: role
         }))
       }else if(role === "seller"){
         setContract( prev =>({
           ...prev,
-          sellerId: userData.userId
+          buyerId: "",
+          sellerId: userData.userId,
+          userId: userData.userId,
+          escrowFeePaidBy: role
         }))
       }
     }
-  }, [])
+  }, [role])
 
   const [newAgreementTerm, setNewAgreementTerm] = useState<string>('');
   const [openContractItemsDrawer, setOpenContractItemsDrawer] = useState(false);
@@ -97,12 +149,12 @@ const AddNewContract = ({token}: {token: string}) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
   
-    if (name === 'inspectionPeriod' && isNaN(Number(value))) {
+    if (name === 'inspectionPeriod' && value !== "" && isNaN(Number(value))) {
       return;
     }
     setContract((prevContract) => ({
       ...prevContract,
-      [name]: value,
+      [name]: (name === "inspectionPeriod" && value !== "") ? parseInt(value) : value,
     }));
   };
 
@@ -143,7 +195,7 @@ const AddNewContract = ({token}: {token: string}) => {
   const handleAddContractItem = () => {
     setContract((prevContract) => ({
       ...prevContract,
-      contractItems: [...prevContract.contractItems, { ...newContractItem, id: Date.now() }],
+      contractItems: [...prevContract?.contractItems, { ...newContractItem, id: Date.now() }],
     }));
     setNewContractItem({
       itemName: '',
@@ -156,10 +208,10 @@ const AddNewContract = ({token}: {token: string}) => {
     setOpenContractItemsDrawer(false)
   };
 
-  const handleRemoveContractItem = (id: number) => {
+  const handleRemoveContractItem = (id: string |number) => {
     setContract((prevContract) => ({
       ...prevContract,
-      contractItems: prevContract.contractItems.filter((item) => item.id !== id),
+      contractItems: prevContract?.contractItems?.filter((item) => item.id !== id),
     }));
   };
 
@@ -180,7 +232,7 @@ const AddNewContract = ({token}: {token: string}) => {
   const handleRemoveAgreementTerm = (index: number) => {
     setContract((prevContract) => ({
       ...prevContract,
-      agreementTerms: prevContract.agreementTerms.filter((_, i) => i !== index),
+      agreementTerms: prevContract.agreementTerms.filter((_: any, i: number) => i !== index),
     }));
   };
 
@@ -189,32 +241,27 @@ const AddNewContract = ({token}: {token: string}) => {
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
-  
-    /* const validateForm = () => {
-      if (!email || !password) {
-        setError("Email and password are required.");
-        return false;
-      }
-  
-      const emailRegex = /\S+@\S+\.\S+/;
-      if (!emailRegex.test(email)) {
-        setError("Enter a valid email address.");
-        return false;
-      }
-  
-      return true;
-    }; */
+
 
   const handleFormSubmit = async () => {
     console.log('Contract Data:', contract);
-    //if (!validateForm()) return;
+    const error = validateContract();
+    if(error){
+      console.log(contract);
+      return setError(error)
+    }
   
     try {
       setLoading(true);
       setError(null);
       setSuccess(null);
-  
-      const res = await axios.post("/api/contract", contract);
+      const data = {...contract};
+      if(data.buyerId === ""){
+        delete data.buyerId;
+      }else if(data.sellerId === ""){
+        delete data.sellerId
+      }
+      const res = await axios.post("/api/contract", data);
       console.log(res)
       setSuccess(res.data.message);
     } catch (error: any) {
@@ -225,6 +272,16 @@ const AddNewContract = ({token}: {token: string}) => {
     }
   };
 
+
+  const setPreviewScreen = () =>{
+    console.log(contract)
+    const error = validateContract();
+    if(error){
+      return setError(error)
+    }
+
+    setCurrentScreen("preview")
+  }
 
 
 
@@ -245,7 +302,7 @@ const AddNewContract = ({token}: {token: string}) => {
       <InsideNavbar />
       <div className="flex-1 h-full p-5">
 
-      {error && <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-error rounded-md max-w-80 flex justify-between">
+        {error && <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-error rounded-md max-w-80 flex justify-between">
           <span>{error}</span>
           <svg onClick={() => setError("")} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -380,11 +437,11 @@ const AddNewContract = ({token}: {token: string}) => {
             </header>
 
             <ul className="space-y-4">
-              {contract.contractItems.map((product, index) => (
+              {contract.contractItems?.map((product, index) => (
                 <li
                   key={product.id}
                   className={`${
-                    index !== contract.contractItems.length - 1 && 'border-b'
+                    index !== contract?.contractItems?.length - 1 && 'border-b'
                   } py-4 flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 max-w-2xl`}
                 >
                   {/* Image */}
@@ -406,9 +463,9 @@ const AddNewContract = ({token}: {token: string}) => {
                   <div className="flex flex-col items-center gap-4">
                     <div className="font-semibold text-gray-700 flex items-center">
                       <span>{product.quantity} unit(s)</span>
-                      <TrashIcon className='ml-3 w-5 h-5 text-red-800 cursor-pointer' onClick={() => handleRemoveContractItem(product.id)} />
+                      <TrashIcon className='ml-3 w-5 h-5 text-red-800 cursor-pointer' onClick={() => handleRemoveContractItem(product?.id)} />
                     </div>
-                    <p className="font-semibold text-gray-700">NGN{parseFloat(product.price).toFixed(2)}</p>
+                    <p className="font-semibold text-gray-700">NGN{parseFloat(product.price.toString()).toFixed(2)}</p>
                   </div>
                 </li>
               ))}
@@ -448,7 +505,7 @@ const AddNewContract = ({token}: {token: string}) => {
             </header>
 
             <ul className="flex flex-col gap-2">
-              {contract.agreementTerms.map((term, index) => (
+              {contract.agreementTerms.map((term: string, index: number) => (
                 <li key={index} className="flex items-center w-full max-w-5xl gap-2">
                   <span className="inline-block border border-neutral-400 px-4 py-3 text-sm rounded-md w-full shadow text-[#272727]">
                     {term}
@@ -485,7 +542,7 @@ const AddNewContract = ({token}: {token: string}) => {
 
 
 
-          <button type="button" onClick={()=>setCurrentScreen("preview")} className="btn btn-wide btn-lg text-base btn-primary mt-8">
+          <button type="button" onClick={setPreviewScreen} className="btn btn-wide btn-lg text-base btn-primary mt-8">
             Preview Contract
           </button>
         </form>

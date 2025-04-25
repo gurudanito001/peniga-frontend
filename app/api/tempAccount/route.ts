@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     const payload = await request.json();
     const token = await getToken();
 
-    const response = await fetch(`${API_URL.base_url}/contract`, {
+    const response = await fetch(`${API_URL.base_url}/tempAccount/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,14 +28,14 @@ export async function POST(request: Request) {
     console.log(data)
 
 
-    return NextResponse.json({ message: 'Contract Created successfully' }, { status: response.status });
+    return NextResponse.json({ message: 'Temp Account Generated successfully' }, { status: response.status });
   } catch (error: any) {
     console.error("Login error:", error);
     return NextResponse.json({ message: 'Internal server error', }, { status: 500 });
   }
 }
 
-export async function GET(request: Request) {
+/* export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
   const token = searchParams.get('token');
@@ -58,4 +58,4 @@ export async function GET(request: Request) {
     console.error("Get Contracts error:", error);
     return NextResponse.json({ message: 'Internal server error', }, { status: 500 });
   }
-}
+} */

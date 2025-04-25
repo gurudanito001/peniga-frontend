@@ -24,16 +24,6 @@ export async function POST(request: Request) {
       const errorData = await response.json();
       return NextResponse.json({ ...errorData}, {status: response.status});
     }
-    
-    //const data = await response.json();
-    //console.log(data)
-    /* const cookieStore = await cookies();
-    cookieStore.set("token", data.payload.token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 86400, // 1 day in seconds
-      path: "/",
-    }); */
 
     return NextResponse.json({ message: 'Account Created successfully'}, {status: response.status});
   } catch (error: any) {

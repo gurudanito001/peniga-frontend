@@ -6,15 +6,19 @@ import Link from "next/link";
 import { FaCrown } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import InsideNavbar from "../insideNavbar";
-import ContractItem from "./contractItem";
+import ListContracts from "./listContracts";
 import { getToken } from "@/app/lib/auth";
+//import { Contract } from "@/app/utils/interfaces";
 
 
 const ContractsDashboard = async () => {
   const token = await getToken();
-  console.log("Token from ContractsDashboard", token);
-  const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/api/contract`);
-  console.log(res);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/api/contract?token=${token}`, {cache: "no-store"}) as any;
+  const data = await res.json();
+
+
+  
   const categories = [
     {
       name: "Sales",
@@ -85,7 +89,7 @@ const ContractsDashboard = async () => {
             ))}
           </div>
         </div>
-        <ContractItem />
+        <ListContracts contracts={data?.data} />
       </div>
     </section>
   )

@@ -22,7 +22,7 @@ export default async function ProtectedLayout({
     <html className={`${nunito.className} bg-white`} >
       <body>
         <div className="flex h-screen">
-          <div className="hidden md:flex h-screen">
+          <div className="hidden lg:flex h-screen">
             <Sidebar />
           </div>
           
@@ -30,7 +30,7 @@ export default async function ProtectedLayout({
 
             <div className="drawer h-full">
               <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-              <div className="drawer-content flex flex-col h-full">
+              <div className="drawer-content flex flex-col h-full pb-16 lg:pb-0">
                 {children}
                 <BottomNav />
               </div>
