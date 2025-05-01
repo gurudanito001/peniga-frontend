@@ -34,7 +34,16 @@ const ListContracts = ({contracts = []}: {contracts?: Contract[]}) => {
 
               <div className="text-gray-600 w-1/6 min-w-0 overflow-hidden"> {/* Fixed width for Owner */}
                 <p className="text-sm text-gray-400 mb-1">Owner:</p>
-                <p className="text-ellipsis overflow-hidden whitespace-nowrap">{contract.buyerId === contract.userId ? `${contract?.buyer?.firstName} ${contract?.buyer?.lastName}` : `${contract?.seller?.firstName} ${contract?.seller?.lastName}`}</p>
+                <div className="flex items-center">
+                  <span className={`w-7 h-7 flex items-center justify-center rounded-full text-white text-xs bg-green-900`}
+                  >
+                    {contract.buyerId === contract.userId ? `${contract?.buyer?.firstName[0] || contract.toBeInformed.email[0]} ${contract?.buyer?.lastName[0] || ""}` : `${contract?.seller?.firstName[0] || contract.toBeInformed.email[0]} ${contract?.seller?.lastName[0] || ""}`}
+                  </span>
+                  <div className="text-sm font-semibold text-[#272727] ml-1 text-ellipsis overflow-hidden whitespace-nowrap">
+                    {contract.buyerId === contract.userId ? truncateMiddle(`${contract?.buyer?.firstName || contract.toBeInformed.email} ${contract?.buyer?.lastName || ""}`) : truncateMiddle(`${contract?.seller?.firstName || contract.toBeInformed.email} ${contract?.seller?.lastName || ""}`) }
+                  </div>
+                </div>
+                {/* <p className="text-ellipsis overflow-hidden whitespace-nowrap">{contract.buyerId === contract.userId ? `${contract?.buyer?.firstName} ${contract?.buyer?.lastName}` : `${contract?.seller?.firstName} ${contract?.seller?.lastName}`}</p> */}
               </div>
 
               <div className="text-gray-600 w-1/6 min-w-0 overflow-hidden"> {/* Fixed width for Shared with */}
@@ -42,10 +51,10 @@ const ListContracts = ({contracts = []}: {contracts?: Contract[]}) => {
                 <div className="flex items-center">
                   <span className={`w-7 h-7 flex items-center justify-center rounded-full text-white text-xs font-semibold bg-green-900`}
                   >
-                    {contract.buyerId === contract.userId ? `${contract?.seller?.firstName[0]} ${contract?.seller?.lastName[0]}` : contract.toBeInformed?.email[0]}
+                    {contract.buyerId === contract.userId ? `${contract?.seller?.firstName[0] || contract.toBeInformed.email[0]} ${contract?.seller?.lastName[0] || ""}` : `${contract?.buyer?.firstName[0] || contract.toBeInformed.email[0]} ${contract?.buyer?.lastName[0] || ""}`}
                   </span>
                   <div className="text-xs font-semibold text-[#272727] ml-1 text-ellipsis overflow-hidden whitespace-nowrap">
-                    {contract.buyerId === contract.userId ? truncateMiddle(`${contract?.seller?.firstName} ${contract?.seller?.lastName}`) : truncateMiddle(contract.toBeInformed?.email) }
+                    {contract.buyerId === contract.userId ? truncateMiddle(`${contract?.seller?.firstName || contract.toBeInformed.email} ${contract?.seller?.lastName || ""}`) : truncateMiddle(`${contract?.buyer?.firstName || contract.toBeInformed.email} ${contract?.buyer?.lastName || ""}`) }
                   </div>
                 </div>
               </div>

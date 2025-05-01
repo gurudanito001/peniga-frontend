@@ -2,8 +2,8 @@
 import { FaFileSignature, } from "react-icons/fa";
 import { Contract } from "@/app/utils/interfaces";
 import moment from "moment";
-import InsideNavbar from "@/app/(protected)/insideNavbar";
 import { truncateText, truncateMiddle } from "@/app/lib/funcs";
+import Link from "next/link";
 
 const AllContracts = ({contracts = []}: {contracts?: Contract[]}) => {
   
@@ -14,16 +14,15 @@ const AllContracts = ({contracts = []}: {contracts?: Contract[]}) => {
 
   return (
     <section className=" bg-[#E8F5E9] h-screen  overflow-y-auto w-full">
-      <InsideNavbar/>
       <div className="mx-auto flex flex-col px-5 lg:px-12 mt-7">
         <div className=" mb-5 flex items-center justify-between">
           <h1 className="font-bold text-2xl">All Contracts</h1>
         </div>
 
         {contracts.map((contract) => (
-          <div key={contract?.id}>
+          <Link href={`/contracts/${contract.id}`} key={contract?.id}>
             <div
-              className="bg-gray-100 p-4 mb-4 rounded-lg shadow hidden md:flex justify-evenly items-center gap-3"
+              className="bg-gray-100 hover:bg-slate-200 p-4 mb-4 rounded-lg shadow hidden md:flex justify-evenly items-center gap-3"
             >
               <div className="flex items-center w-2/6 min-w-0"> {/* Fixed width for title */}
                 <FaFileSignature className="bg-secondary p-2 rounded-sm text-4xl text-white" />
@@ -37,7 +36,16 @@ const AllContracts = ({contracts = []}: {contracts?: Contract[]}) => {
 
               <div className="text-gray-600 w-1/6 min-w-0 overflow-hidden"> {/* Fixed width for Owner */}
                 <p className="text-sm text-gray-400 mb-1">Owner:</p>
-                <p className="text-ellipsis overflow-hidden whitespace-nowrap">{contract.buyerId === contract.userId ? `${contract?.buyer?.firstName} ${contract?.buyer?.lastName}` : `${contract?.seller?.firstName} ${contract?.seller?.lastName}`}</p>
+                <div className="flex items-center">
+                  <span className={`w-7 h-7 flex items-center justify-center rounded-full text-white text-xs bg-green-900`}
+                  >
+                    {contract.buyerId === contract.userId ? `${contract?.buyer?.firstName[0] || contract.toBeInformed.email[0]} ${contract?.buyer?.lastName[0] || ""}` : `${contract?.seller?.firstName[0] || contract.toBeInformed.email[0]} ${contract?.seller?.lastName[0] || ""}`}
+                  </span>
+                  <div className="text-sm font-semibold text-[#272727] ml-1 text-ellipsis overflow-hidden whitespace-nowrap">
+                    {contract.buyerId === contract.userId ? truncateMiddle(`${contract?.buyer?.firstName || contract.toBeInformed.email} ${contract?.buyer?.lastName || ""}`) : truncateMiddle(`${contract?.seller?.firstName || contract.toBeInformed.email} ${contract?.seller?.lastName || ""}`)}
+                  </div>
+                </div>
+                {/* <p className="text-ellipsis overflow-hidden whitespace-nowrap">{contract.buyerId === contract.userId ? `${contract?.buyer?.firstName} ${contract?.buyer?.lastName}` : `${contract?.seller?.firstName} ${contract?.seller?.lastName}`}</p> */}
               </div>
 
               <div className="text-gray-600 w-1/6 min-w-0 overflow-hidden"> {/* Fixed width for Shared with */}
@@ -45,10 +53,10 @@ const AllContracts = ({contracts = []}: {contracts?: Contract[]}) => {
                 <div className="flex items-center">
                   <span className={`w-7 h-7 flex items-center justify-center rounded-full text-white text-xs font-semibold bg-green-900`}
                   >
-                    {contract.buyerId === contract.userId ? `${contract?.seller?.firstName[0]} ${contract?.seller?.lastName[0]}` : contract.toBeInformed?.email[0]}
+                    {contract.buyerId === contract.userId ? `${contract?.seller?.firstName[0] || contract.toBeInformed.email[0]} ${contract?.seller?.lastName[0] || ""}` : `${contract?.buyer?.firstName[0] || contract.toBeInformed.email[0]} ${contract?.buyer?.lastName[0] || ""}`}
                   </span>
                   <div className="text-xs font-semibold text-[#272727] ml-1 text-ellipsis overflow-hidden whitespace-nowrap">
-                    {contract.buyerId === contract.userId ? truncateMiddle(`${contract?.seller?.firstName} ${contract?.seller?.lastName}`) : truncateMiddle(contract.toBeInformed?.email)}
+                    {contract.buyerId === contract.userId ? truncateMiddle(`${contract?.seller?.firstName || contract.toBeInformed.email} ${contract?.seller?.lastName || ""}`) : truncateMiddle(`${contract?.buyer?.firstName || contract.toBeInformed.email} ${contract?.buyer?.lastName || ""}`)}
                   </div>
                 </div>
               </div>
@@ -68,7 +76,7 @@ const AllContracts = ({contracts = []}: {contracts?: Contract[]}) => {
             </div>
 
             {/* ... mobile layout ... */}
-          </div>
+          </Link>
         ))}
       </div>
     </section>

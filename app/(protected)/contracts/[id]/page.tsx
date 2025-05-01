@@ -13,8 +13,10 @@ import { getToken } from "@/app/lib/auth";
 import jwt from 'jsonwebtoken';
 import { Contract, userTokenData } from "@/app/utils/interfaces";
 import { truncateMiddle } from "@/app/lib/funcs";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { ArrayOfStages } from "@/app/lib/funcs";
+import ContractDetailsMiddleware from "./middlewareComponent";
+import AutoRefresh from "./autoRefresh";
 
 
 interface PageParams {
@@ -25,34 +27,60 @@ interface PageParams {
 
 
 const Home = async({ params }: PageParams) => {
-
   const token = await getToken() as string;
   const userData = jwt.decode(token) as userTokenData;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const {id: contractId} = await params;
   const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/api/contract/${contractId}?token=${token}`, {cache: "no-store"}) as any;
   const data = await res.json();
   const {data: contract}: {data: Contract} = data;
+  /* const payload = {
+    ...(!contract?.buyerId && {buyerId: userData?.userId}),
+    ...(!contract?.sellerId && {sellerId: userData?.userId})
+  }
+  if((!contract?.buyerId || !contract?.sellerId) && userData?.userId !== contract?.userId && (payload?.buyerId || payload?.sellerId)){
+    const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/api/contract/${contractId}`, {method: "PATCH", body: JSON.stringify(payload)} ) as any;
+    const data = await res.json()
+    contract = data.data;
+  } */
+  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  
+  if((!contract?.buyerId || !contract?.sellerId) && userData?.userId !== contract?.userId){
+    return(
+      <ContractDetailsMiddleware userData={userData} contract={contract} />
+    )
+  }
+  
   console.log("Data from contract details page", data)
   console.log(ArrayOfStages.indexOf(contract?.stage as string))
-  if(userData?.userId !== contract.sellerId && userData.userId !== contract.buyerId){
+  if(userData?.userId !== contract?.sellerId && userData?.userId !== contract?.buyerId){
     redirect("/dashboard")
   }
 
+  const getUserRole = () =>{
+    if(contract?.buyerId === userData?.userId){
+      return "Buyer"
+    }else if(contract?.sellerId === userData?.userId){
+      return "Seller"
+    }else{
+      return null
+    }
+  }
+
   const stageDescription = () =>{
-    switch (contract.stage) {
+    switch (contract?.stage) {
       case "CREATED":
-        return `Waiting for ${contract.userId === contract.buyerId ? "seller" : "buyer"} to agree to the contract`
+        return `Waiting for ${contract?.userId === contract?.buyerId ? `${contract?.sellerId === userData?.userId ? "you" : "seller"}` : `${contract?.buyerId === userData?.userId ? "you" : "buyer"}`} to agree to the contract`
       case "AGREED": 
-        return `Waiting for buyer to make payment`
+        return `Waiting for ${contract?.buyerId === userData?.userId ? "you" : "buyer"} to make payment`
       case "PAID":
-        return `Buyer has made payment. Waiting for seller to make the delivery`
+        return `Waiting for ${contract?.sellerId === userData?.userId ? "you" : "seller"} to make the delivery`
       case "DELIVERED": 
-        return `Buyer has received the package. Buyer will inspect the product for ${contract.inspectionPeriod} days.`
+        return `Waiting for ${contract?.buyerId === userData?.userId ? "you" : "buyer"} to inspect and approve the product${contract?.contractItems.length > 1 ? "s" : ""}  `
       case "INSPECTED":
-        return `Buyer is satisfied with the product. Complete payment will be made to seller`
+        return `${contract?.buyerId === userData?.userId ? "You are" : "Buyer is"} satisfied with the product, ${contract?.sellerId === userData?.userId ? "you" : "seller"} can now withdraw payment.`
       case "COMPLETED":
-        return `Payment has been made to seller. TRANSACTION SUCCESSFUL !!!`
+        return `Payment has been made to ${contract?.sellerId === userData?.userId ? "you" : "seller"}. TRANSACTION COMPLETED !!!`
       default:
         break;
     }
@@ -60,18 +88,19 @@ const Home = async({ params }: PageParams) => {
 
   return (
     <section className={`w-full h-screen p-5 overflow-y-auto bg-base-100/40`}>
-      <InsideNavbar />
       <div className="w-full flex">
         <div className="w-full md:w-3/5 xl:w-2/3">
 
           <header className="px-5 py-3 md:mx-5 shadow border flex items-center">
             <div>
               <div className="flex items-center">
-                <h2 className="text-2xl font-bold mr-3">
-                  {contract.buyerId === userData?.userId ?  `${contract?.seller?.firstName} ${contract?.seller?.lastName}` : truncateMiddle(contract.toBeInformed.email)} </h2>
-                <span className="badge badge-secondary">{contract.buyerId === userData?.userId ? "Seller" : "Buyer" }</span>
+                <h2 className="text-xl font-semibold mr-3">
+                  {contract?.buyerId === userData?.userId && `${contract?.seller?.firstName || contract?.toBeInformed?.email} ${contract?.seller?.lastName || ""}`} 
+                  {contract?.sellerId === userData?.userId && `${contract?.buyer?.firstName || contract?.toBeInformed?.email} ${contract?.buyer?.lastName || ""}`} 
+                </h2>
+                <span className="badge badge-secondary">{contract?.buyerId === userData?.userId ? "Seller" : "Buyer" }</span>
               </div>
-              <span>{contract.buyerId === userData?.userId ? data?.data?.seller?.email : data?.data?.buyer?.email }</span>
+              <span>{contract?.buyerId === userData?.userId ? data?.data?.seller?.email : data?.data?.buyer?.email }</span>
             </div>
 
             <div className=" flex items-center gap-2 ml-auto">
@@ -84,12 +113,13 @@ const Home = async({ params }: PageParams) => {
 
           <section className=" py-3 md:mx-5">
             <div role="alert" className="alert alert-vertical sm:alert-horizontal rounded-md">
-              <span className="w-8 h-8 rounded-full flex items-center justify-center border border-primary"><FaInfo /></span>
+              <span className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-primary font-semibold text-xl">
+              {ArrayOfStages.indexOf(contract?.stage as string) + 2}
+              </span>
               <div>
                 <h3 className="font-bold">Next Step!</h3>
                 <div className="text-sm">{stageDescription()}</div>
               </div>
-              <button className="btn btn-sm btn-primary">View</button>
             </div>
           </section>
 
@@ -98,24 +128,27 @@ const Home = async({ params }: PageParams) => {
           <div className=" py-3 md:mx-5 flex flex-col gap-3">
             <div className="collapse collapse-plus bg-base-100 border border-base-300 rounded-md">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title font-semibold text-left text-lg flex items-center">
-                <span className={`flex border ${ArrayOfStages.indexOf(contract?.stage as string) >= -1  ? "bg-secondary text-white" : "border-secondary text-secondary"} items-center justify-center w-8 h-8 rounded-full text-xl mr-2`}>
-                  {ArrayOfStages.indexOf(contract?.stage as string) > -1  ? <FaCheck fontSize={14} /> : 1}
-                </span>
-                Create Contract
+              <div className="collapse-title font-semibold text-left text-lg">
+                <header className='flex items-center'>
+                  <span className={`flex border ${ArrayOfStages.indexOf(contract?.stage as string) >= -1 ? "bg-secondary text-white" : "border-secondary text-secondary"} items-center justify-center w-8 h-8 rounded-full text-xl mr-2`}>
+                    {ArrayOfStages.indexOf(contract?.stage as string) > -1 ? <FaCheck fontSize={14} /> : 1}
+                  </span>
+                  Create{ArrayOfStages.indexOf(contract?.stage as string) > -1 && "d"} Contract
+                </header>
+                <p className='font-normal text-sm pl-10 text-gray-600'>Contract has been created by {contract?.userId === contract?.buyerId ? `${contract?.buyerId === userData?.userId ? "you" : "buyer"}` : `${contract?.sellerId === userData?.userId ? "you" : "seller"}`}</p>
               </div>
-              <div className="collapse-content text-sm">Contract has been created</div>
             </div>
             
-            <ContractAgreement contract={contract} />
+            <ContractAgreement contract={contract} userData={userData} />
 
-            <ContractPayment contract={contract} />
+            <ContractPayment contract={contract} userData={userData} />
 
-            <ContractDelivery contract={contract}/>
+            <ContractDelivery contract={contract} userData={userData}/>
 
-            <ContractApproval contract={contract}/>
+            <ContractApproval contract={contract} userData={userData}/>
 
-            <ContractWithdrawal contract={contract}/>
+            {(contract?.sellerId === userData?.userId) &&
+            <ContractWithdrawal contract={contract} userData={userData}/>}
 
 
           </div>
@@ -150,7 +183,7 @@ const Home = async({ params }: PageParams) => {
       </div>
 
 
-
+      <AutoRefresh />
     </section>
   )
 }

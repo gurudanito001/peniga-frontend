@@ -5,7 +5,6 @@ import Link from "next/link";
 //import { DocumentPlusIcon } from "@heroicons/react/16/solid";
 import { FaCrown } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import InsideNavbar from "../insideNavbar";
 import ListContracts from "./listContracts";
 import { getToken } from "@/app/lib/auth";
 //import { Contract } from "@/app/utils/interfaces";
@@ -16,6 +15,7 @@ const ContractsDashboard = async () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/api/contract?token=${token}`, {cache: "no-store"}) as any;
   const data = await res.json();
+  console.log(data);
 
 
   
@@ -52,7 +52,6 @@ const ContractsDashboard = async () => {
   return (
 
     <section className="flex flex-col text-neutral h-screen bg-[#E8F5E9] md:px-6 overflow-y-auto">
-      <InsideNavbar />
       <header className="text-2xl font-bold mb-5 flex items-center w-full mt-5 px-5">
         <span className="text-[#272727]">Contracts</span> <Link href="/contracts/new" className="ml-auto px-4 py-2 bg-[#272727] text-white rounded-md text-sm">Create Contract</Link>
       </header>

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import InsideNavbar from '@/app/(protected)/insideNavbar';
 import { XMarkIcon, TrashIcon } from '@heroicons/react/16/solid';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -10,6 +9,7 @@ import CreateContractOptions from './createContractOptions';
 import PreviewContract from './previewContract';
 import jwt from 'jsonwebtoken';
 import axios from "axios";
+import { formatAsCurrency } from '@/app/lib/funcs';
 
 import { Contract, ContractItem, userTokenData } from '@/app/utils/interfaces';
 
@@ -299,7 +299,7 @@ const AddNewContract = ({token}: {token: string}) => {
 
   return (
     <section className="w-full h-screen bg-neutral-100 p-5 overflow-y-auto">
-      <InsideNavbar />
+      
       <div className="flex-1 h-full p-5">
 
         {error && <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-error rounded-md max-w-80 flex justify-between">
@@ -465,7 +465,7 @@ const AddNewContract = ({token}: {token: string}) => {
                       <span>{product.quantity} unit(s)</span>
                       <TrashIcon className='ml-3 w-5 h-5 text-red-800 cursor-pointer' onClick={() => handleRemoveContractItem(product?.id)} />
                     </div>
-                    <p className="font-semibold text-gray-700">NGN{parseFloat(product.price.toString()).toFixed(2)}</p>
+                    <p className="font-semibold text-gray-700">{formatAsCurrency(parseFloat(product.price.toString()))}</p>
                   </div>
                 </li>
               ))}

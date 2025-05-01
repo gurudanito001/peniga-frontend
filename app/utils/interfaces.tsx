@@ -287,3 +287,9 @@ export interface userTokenData {
   type: string
   userId: string
 }
+
+export interface Bank {
+  id: number;
+  code: string;
+  name: string;
+}

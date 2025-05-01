@@ -6,6 +6,7 @@ import '@/app/globals.css';
 //import InsideNavbar from "./insideNavbar";
 import Sidebar from './sidebar';
 import BottomNav from './bottomNav';
+import InsideNavbar from './insideNavbar';
 
 const nunito = Nunito({subsets: ["latin"],});
 
@@ -30,7 +31,8 @@ export default async function ProtectedLayout({
 
             <div className="drawer h-full">
               <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-              <div className="drawer-content flex flex-col h-full pb-16 lg:pb-0">
+              <div className="drawer-content flex flex-col max-h-full overflow-y-auto pb-16 lg:pb-0">
+                <InsideNavbar />
                 {children}
                 <BottomNav />
               </div>

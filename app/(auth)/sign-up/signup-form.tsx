@@ -4,13 +4,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
 import axios from "axios";
 
 const SignUpForm = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo") || "/dashboard";
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -93,7 +95,7 @@ const SignUpForm = () => {
       });
 
       setSuccess("Account verified successfully!");
-      router.push("/dashboard");
+      router.push(redirectTo);
     } catch (err: any) {
       setError(err.response?.data?.message || "Something went wrong. Try again.");
     } finally {

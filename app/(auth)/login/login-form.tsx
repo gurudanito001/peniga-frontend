@@ -50,7 +50,7 @@ const LoginForm = () => {
       
       setError("");
       setSuccess(res.data.message);
-      router.push(redirectTo || "/dashboard");
+      router.push(redirectTo);
     } catch (error: any) {
       setSuccess("");
       setError(error?.response?.data?.message || "Login failed.");

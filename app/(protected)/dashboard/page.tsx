@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FaCrown } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import InsideNavbar from "../insideNavbar";
 
 
 const Home = () => {
@@ -40,7 +39,6 @@ const Home = () => {
   return (
 
     <section className="flex flex-col text-neutral h-screen bg-[#E8F5E9] md:px-6 overflow-y-auto">
-      <InsideNavbar />
       <header className="text-2xl font-bold mb-5 flex items-center w-full mt-5 px-5 lg:px-0">
         <span className="text-[#272727]">Dashboard</span> <Link href="/dashboard/contracts/new" className="ml-auto px-4 py-2 bg-[#272727] text-white rounded-md text-sm">Create Contract</Link>
       </header>

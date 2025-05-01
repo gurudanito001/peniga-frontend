@@ -1,8 +1,8 @@
 'use client';
 
-import InsideNavbar from '@/app/(protected)/insideNavbar';
 import Image from 'next/image';
 import { Contract } from '@/app/utils/interfaces';
+import { formatAsCurrency } from '@/app/lib/funcs';
 
 
 
@@ -14,9 +14,8 @@ const PreviewContract = ({contractDetails, setCurrentScreen, handleSubmit, isLoa
     }
 
     return (
-        <section className="w-full h-screen bg-neutral-100 p-5 pb-20 overflow-y-hidden">
-            <InsideNavbar />
-            <div className='flex-1 h-full overflow-y-auto p-5 max-w-5xl'>
+        <section className="w-full h-screen bg-neutral-100 p-5 pb-20 overflow-y-auto">
+            <div className='flex-1 h-full p-5 max-w-5xl'>
                 <header className="text-xl font-semibold text-neutral-600 mb-5 flex justify-between items-center">
                     <span>Preview Contract</span>
 
@@ -79,7 +78,7 @@ const PreviewContract = ({contractDetails, setCurrentScreen, handleSubmit, isLoa
                                 {product?.quantity && product?.price &&<div className="flex flex-col items-center gap-4">
                                     <span> <strong>{product.quantity}</strong> unit(s)</span>
                                     <p className="font-semibold text-gray-700">
-                                        NGN{(parseInt(product?.quantity.toString()) * parseInt(product.price.toString())).toFixed(2)}
+                                        {formatAsCurrency(parseInt(product?.quantity.toString()) * parseInt(product.price.toString()))}
                                     </p>
                                 </div>}
                             </li>
