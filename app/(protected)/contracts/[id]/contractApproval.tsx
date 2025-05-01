@@ -44,7 +44,7 @@ const ContractApproval = ({ contract, userData }: { contract: Contract, userData
           <p className='font-normal text-sm pl-10 text-gray-600'>Package has been inspected and approved by {contract?.buyerId === userData?.userId ? "you" : "buyer"}</p>
         }
       </div>
-      {(ArrayOfStages.indexOf(contract?.stage as string) === 3) &&
+      {((ArrayOfStages.indexOf(contract?.stage as string) === 3) && contract?.buyerId === userData?.userId) &&
       <div className="collapse-content text-sm">
         <p>Waiting for {contract?.buyerId === userData?.userId ? "you" : "buyer"} to inspect and approve the delivery</p>
 
