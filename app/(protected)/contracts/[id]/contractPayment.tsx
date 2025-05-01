@@ -83,8 +83,12 @@ const ContractPayment = ({ contract, userData }: { contract: Contract, userData:
   const [endTime, setEndTime] = useState('');
 
   useEffect(() => {
+    if (!startTimeISOString) {
+      console.error("startTimeISOString is undefined or empty");
+      return; // Or set a default:  startTimeISOString = new Date().toISOString();
+    }
     const startTime = new Date(startTimeISOString);
-    const calculatedEndTime = new Date(startTime.getTime() + 30 * 60 * 1000); // Add 30 minutes
+    const calculatedEndTime = new Date(startTime.getTime() + 30 * 60 * 1000);
     setEndTime(calculatedEndTime.toISOString());
   }, [startTimeISOString]);
 
