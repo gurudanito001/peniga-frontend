@@ -112,6 +112,7 @@ const ContractPayment = ({ contract, userData }: { contract: Contract, userData:
   }
 
   return (
+    (ArrayOfStages.indexOf(contract?.stage as string) === 1) &&
     <div className={`collapse collapse-plus bg-base-100 ${ArrayOfStages.indexOf(contract?.stage as string) === 1 ? "border-2 border-base-content" : "border border-base-300"}  rounded-md`}>
       <input type="radio" name="my-accordion-3" defaultChecked={contract?.stage === "AGREED"} />
       <div className="collapse-title font-semibold text-left text-lg">
@@ -134,21 +135,7 @@ const ContractPayment = ({ contract, userData }: { contract: Contract, userData:
         </p>}
 
         {tempAccount && <div className="card rounded-md w-full max-w-2xl bg-base-100 card-lg shadow-sm border mt-5 relative">
-          {/* For TSX uncomment the commented types below */}
-          {/* <div className="grid grid-flow-col gap-2 text-center auto-cols-max absolute top-0 right-0">
-            <div className="flex flex-col p-2 bg-neutral rounded-md text-neutral-content">
-              <span className="countdown font-mono text-xl">
-                <span style={{ "--value": 24 } as React.CSSProperties} aria-live="polite" aria-label={''}>24</span>
-              </span>
-              min
-            </div>
-            <div className="flex flex-col p-2 bg-neutral rounded-md text-neutral-content">
-              <span className="countdown font-mono text-xl">
-                <span style={{ "--value": 59 } as React.CSSProperties} aria-live="polite" aria-label={''}>59</span>
-              </span>
-              sec
-            </div>
-          </div> */}
+          
           {endTime && <CountdownTimer endTimeISOString={endTime} />}
 
           <div className="card-body">
