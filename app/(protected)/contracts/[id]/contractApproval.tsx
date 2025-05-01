@@ -44,10 +44,10 @@ const ContractApproval = ({ contract, userData }: { contract: Contract, userData
           <p className='font-normal text-sm pl-10 text-gray-600'>Package has been inspected and approved by {contract?.buyerId === userData?.userId ? "you" : "buyer"}</p>
         }
       </div>
-      {((ArrayOfStages.indexOf(contract?.stage as string) === 3) && contract?.buyerId === userData?.userId) &&
+      
       <div className="collapse-content text-sm">
         <p>Waiting for {contract?.buyerId === userData?.userId ? "you" : "buyer"} to inspect and approve the delivery</p>
-
+        {((ArrayOfStages.indexOf(contract?.stage as string) === 3) && contract?.buyerId === userData?.userId) &&
         <div className='flex flex-col mt-10 gap-4 px-3 lg:px-5'>
           <label className="fieldset-label flex items-center">
             <input type="checkbox" checked={agreeToTerms} onChange={(e) => setAgreeToTerms(e.target.checked)} className="checkbox mr-2" />
@@ -55,8 +55,8 @@ const ContractApproval = ({ contract, userData }: { contract: Contract, userData
           </label>
 
           <button className="btn btn-wide h-9 text-gray-400 font-semibold btn-accent text-base" disabled={!agreeToTerms || loading} onClick={handleApprovePayment}>I Agree</button>
-        </div>
-      </div>}
+        </div>}
+      </div>
     </div>
   )
 }
