@@ -35,7 +35,6 @@ const ContractDelivery = ({ contract, userData }: { contract: Contract, userData
 
 
   return (
-    (ArrayOfStages.indexOf(contract?.stage as string) === 2) &&
     <div className={`collapse collapse-plus bg-base-100 ${ArrayOfStages.indexOf(contract?.stage as string) === 2 ? "border-2 border-base-content" : "border border-base-300"} rounded-md`}>
       <input type="radio" name="my-accordion-3" defaultChecked={contract?.stage === "PAID"} />
       <div className="collapse-title font-semibold text-left text-lg">

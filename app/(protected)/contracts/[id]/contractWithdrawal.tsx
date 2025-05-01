@@ -138,7 +138,6 @@ const ContractWithdrawal = ({ contract, userData }: { contract: Contract, userDa
 
 
   return (
-    (ArrayOfStages.indexOf(contract?.stage as string) === 4) &&
     <div className={`collapse collapse-plus bg-base-100 ${ArrayOfStages.indexOf(contract?.stage as string) === 4 ? "border-2 border-base-content" : "border border-base-300"} rounded-md`}>
       <input type="radio" name="my-accordion-3" defaultChecked={contract?.stage === "INSPECTED"} />
       <div className="collapse-title font-semibold text-left text-lg">

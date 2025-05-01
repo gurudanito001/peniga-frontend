@@ -31,9 +31,6 @@ const ContractDetailsMiddleware = ({userData, contract}: { userData: userTokenDa
     console.log(response)
   }
 
-  
-
-
   return null;
 }
 
