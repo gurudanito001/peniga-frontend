@@ -50,10 +50,10 @@ const HeroSection = () => {
               {/* Transaction Type Dropdown */}
 
               <label className="form-control w-full mb-2">
-                <div className="label">
-                  <span className="label-text text-base text-neutral-500">Role</span>
+                <div className="label pb-0">
+                  <span className="label-text text-sm text-neutral-500">Role</span>
                 </div>
-                <select value={contractRole} onChange={handleChangeRole} className="select bg-transparent border border-gray-400 w-full text-base">
+                <select value={contractRole} onChange={handleChangeRole} className="select bg-transparent border border-gray-400 w-full text-sm">
                   <option disabled value="">Select your role</option>
                   <option value="buyer">I&apos;m Buying</option>
                   <option value="seller">I&apos;m Selling</option>
@@ -64,10 +64,10 @@ const HeroSection = () => {
               {/* Category Dropdown */}
 
               <label className="form-control w-full mt-2">
-                <div className="label">
-                  <span className="label-text text-base text-neutral-500">Category</span>
+                <div className="label pb-0">
+                  <span className="label-text text-sm text-neutral-500">Category</span>
                 </div>
-                <select value={contractType} onChange={handleChangeContractType} className="select bg-transparent border border-gray-400 w-full text-base">
+                <select value={contractType} onChange={handleChangeContractType} className="select bg-transparent border border-gray-400 w-full text-sm">
                   <option disabled value="">Slect Category</option>
                   <option value="techGadgets">Tech Gadgets</option>
                   <option value="automobiles">Automobiles</option>

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import { toast } from "sonner";
 
 const ForgotPassword = () => {
   const router = useRouter();
@@ -16,8 +17,6 @@ const ForgotPassword = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const [currentStage, setCurrentStage] = useState("sendVerificationCode");
@@ -26,7 +25,7 @@ const ForgotPassword = () => {
   const validateEmail = () => {
     const emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(email)) {
-      setError("Enter a valid email address.");
+      toast.error("Enter a valid email address.");
       return false;
     }
     return true;
@@ -34,18 +33,18 @@ const ForgotPassword = () => {
 
   const validateResetPassword = () => {
     if (!email || !verificationCode || !newPassword) {
-      setError("All fields are required.");
+      toast.error("All fields are required.");
       return false;
     }
 
     const emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(email)) {
-      setError("Enter a valid email address.");
+      toast.error("Enter a valid email address.");
       return false;
     }
 
     if (newPassword.length < 8) {
-      setError("Password must be at least 8 characters.");
+      toast.error("Password must be at least 8 characters.");
       return false;
     }
 
@@ -58,17 +57,14 @@ const ForgotPassword = () => {
 
     try {
       setLoading(true);
-      setError(null);
-      setSuccess(null);
-
       const res = await axios.post("/api/auth/forgotPassword", {
         email
       });
 
-      setSuccess("A verification code was sent to your email");
+      toast.success("A verification code was sent to your email");
       setCurrentStage("resetPassword")
     } catch (err: any) {
-      setError(err.response?.data?.message || "Something went wrong. Try again.");
+      toast.error(err.response?.data?.message || "Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
@@ -80,19 +76,16 @@ const ForgotPassword = () => {
 
     try {
       setLoading(true);
-      setError(null);
-      setSuccess(null);
-
       const res = await axios.post("/api/auth/resetPassword", {
         email,
         verificationCode,
         newPassword,
       });
 
-      setSuccess("Password reset successfully!");
+      toast.success("Password reset successfully!");
       router.push("/login");
     } catch (err: any) {
-      setError(err.response?.data?.message || "Something went wrong. Try again.");
+      toast.error(err.response?.data?.message || "Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
@@ -113,34 +106,6 @@ const ForgotPassword = () => {
           <p className="text-gray-600 text-sm text-left mb-6 mt-5">
             No worries, we&apos;ll send you reset instructions
           </p>
-
-          {error && (
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-error rounded-md max-w-80 flex justify-between">
-              <span>{error}</span>
-              <svg
-                onClick={() => setError(null)}
-                className="h-6 w-6 cursor-pointer"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path stroke="currentColor" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-          )}
-
-          {success && (
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-success rounded-md max-w-80 flex justify-between">
-              <span>{success}</span>
-              <svg
-                onClick={() => setSuccess(null)}
-                className="h-6 w-6 cursor-pointer"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path stroke="currentColor" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-          )}
 
           <form onSubmit={handleSendVerificationCode}>
             {/* Email Input */}
@@ -190,34 +155,6 @@ const ForgotPassword = () => {
           <p className="text-gray-600 text-sm text-left mb-6 mt-5">
             Input verification code and new password
           </p>
-
-          {error && (
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-error rounded-md max-w-80 flex justify-between">
-              <span>{error}</span>
-              <svg
-                onClick={() => setError(null)}
-                className="h-6 w-6 cursor-pointer"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path stroke="currentColor" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-          )}
-
-          {success && (
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-success rounded-md max-w-80 flex justify-between">
-              <span>{success}</span>
-              <svg
-                onClick={() => setSuccess(null)}
-                className="h-6 w-6 cursor-pointer"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path stroke="currentColor" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-          )}
 
           <form onSubmit={handleResetPassword}>
             {/* Email Input */}

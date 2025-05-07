@@ -1,8 +1,6 @@
 
-//import Navbar from "@/app/(landingPage)/navbar";
 import ForgotPassword from "./forgot-Password";
 import { Metadata } from "next";
-//import Footer from "@/app/(landingPage)/footer";
 
 
 

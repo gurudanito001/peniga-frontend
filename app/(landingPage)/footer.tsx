@@ -20,7 +20,7 @@ const Footer = () => {
             <div>
               <h3 className="text-sm font-semibold text-[#b9b9b3] mt-5 md:mt-0 mb-2">Contact</h3>
               <p className="text-xs underline mb-3">Contactus@peniga.com</p>
-              <p className="text-xs mt-1 underline">+1 234 567 890</p>
+              <a target="_blank" href="https://wa.me/2348186736264" className="text-xs mt-1 underline">+234 818 673 6264</a>
             </div>
 
             {/* Legal Section */}
@@ -37,7 +37,7 @@ const Footer = () => {
         <div className="flex flex-col-reverse lg:flex-row justify-between items-start lg:items-center text-xs text-gray-300 pt-4">
           {/* Left Side: Copyright */}
           <p className="mt-4 lg:mt-0">
-            Copyright &copy; 2024 Peniga Escrow Services. All rights reserved.
+            Copyright &copy; {new Date().getFullYear()} Peniga Escrow Services. All rights reserved.
           </p>
 
           {/* Right Side: Navigation & Button (Desktop) */}

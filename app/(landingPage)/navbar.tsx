@@ -14,16 +14,14 @@ const Navbar = () => {
         <Link href="/" className="text-xl font-bold text-[#272727] flex items-center">Peniga <div className="border-r-2 border-gray-900 h-6 w-px ml-4"></div></Link>
 
         <ul className="flex items-center space-x-6 p-0 m-0 text-[#272727] font-medium">
-          <Link href="#how-it-works" className="cursor-pointer hover:text-[#C55938]">How it works</Link>
-          <Link href="/#why-choose-us" className="cursor-pointer hover:text-[#C55938]">Why Choose Us</Link>
-          <Link href="/#faq" className="cursor-pointer hover:text-[#C55938] flex items-center">FAQ <div className="h-6 w-px border-gray-900 ml-4 border-r-2"></div></Link>
+          <Link href="#how-it-works" className=" hover:text-[#C55938]">How it works</Link>
+          <Link href="/#why-choose-us" className=" hover:text-[#C55938]">Why Choose Us</Link>
+          <Link href="/#faq" className=" hover:text-[#C55938] flex items-center">FAQ <div className="h-6 w-px border-gray-900 ml-4 border-r-2"></div></Link>
         </ul>
-          
-        {/* <Link href="/sign-up">
-        <button className="px-4 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D]">
-        Get Started
-        </button>
-        </Link> */}
+ 
+        <Link href="/login" className="text-[#C55938] transition font-semibold text-base">
+          Log In
+        </Link>
         <Link href="/sign-up" className="btn px-6 py-2 rounded-md bg-[#C55938] text-white font-medium hover:bg-[#B04A2D] transition">
           Get Started
         </Link>

@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
 import axios from "axios";
+import { toast } from "sonner";
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -23,32 +24,29 @@ const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
-
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const [currentStage, setCurrentStage] = useState("register");
 
   const validateForm = () => {
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
-      setError("All fields are required.");
+      toast.error("All fields are required.");
       return false;
     }
 
     const emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(email)) {
-      setError("Enter a valid email address.");
+      toast.error("Enter a valid email address.");
       return false;
     }
 
     if (password.length < 8) {
-      setError("Password must be at least 8 characters.");
+      toast.error("Password must be at least 8 characters.");
       return false;
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match.");
+      toast.error("Passwords do not match.");
       return false;
     }
 
@@ -61,8 +59,6 @@ const SignUpForm = () => {
 
     try {
       setLoading(true);
-      setError(null);
-      setSuccess(null);
 
       const res = await axios.post("/api/auth/signup", {
         firstName,
@@ -71,10 +67,10 @@ const SignUpForm = () => {
         password,
       });
 
-      setSuccess("A verification code was sent to your email");
+      toast.success("A verification code was sent to your email");
       setCurrentStage("verifyAccount")
     } catch (err: any) {
-      setError(err.response?.data?.message || "Something went wrong. Try again.");
+      toast.error(err.response?.data?.message || "Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
@@ -86,18 +82,15 @@ const SignUpForm = () => {
 
     try {
       setLoading(true);
-      setError(null);
-      setSuccess(null);
-
       const res = await axios.post("/api/auth/verifyAccount", {
         email,
         verificationCode,
       });
 
-      setSuccess("Account verified successfully!");
+      toast.success("Account verified successfully!");
       router.push(redirectTo);
     } catch (err: any) {
-      setError(err.response?.data?.message || "Something went wrong. Try again.");
+      toast.error(err.response?.data?.message || "Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
@@ -114,23 +107,7 @@ const SignUpForm = () => {
       {currentStage === "register" &&
         <div className="col-span-2 flex justify-center items-center h-full">
           <div className="p-6 rounded-2xl shadow-lg w-full md:max-w-lg flex flex-col justify-center h-full" style={{ background: "linear-gradient(to bottom, #FFF8F3, #E4CABF)" }}>
-            {error && (
-              <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-error rounded-md max-w-80 flex justify-between">
-                <span>{error}</span>
-                <svg onClick={() => setError(null)} className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </div>
-            )}
-            {success && (
-              <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-success rounded-md max-w-80 flex justify-between">
-                <span>{success}</span>
-                <svg onClick={() => setSuccess(null)} className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </div>
-            )}
-
+            
             <h2 className="text-2xl font-semibold text-[#272727] mb-2">Create Account</h2>
 
             <form onSubmit={handleRegister} className="mt-4 space-y-4">
@@ -226,23 +203,7 @@ const SignUpForm = () => {
       {currentStage === "verifyAccount" &&
         <div className="col-span-2 flex justify-center items-center h-full">
           <div className="p-6 rounded-2xl shadow-lg w-full md:max-w-lg flex flex-col justify-center h-full" style={{ background: "linear-gradient(to bottom, #FFF8F3, #E4CABF)" }}>
-            {error && (
-              <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-error rounded-md max-w-80 flex justify-between">
-                <span>{error}</span>
-                <svg onClick={() => setError(null)} className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </div>
-            )}
-            {success && (
-              <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} role="alert" className="alert alert-success rounded-md max-w-80 flex justify-between">
-                <span>{success}</span>
-                <svg onClick={() => setSuccess(null)} className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </div>
-            )}
-
+            
             <h2 className="text-2xl font-semibold text-[#272727] mb-2">Verify Account</h2>
 
             <form onSubmit={handleVerifyAccount} className="mt-4 space-y-4">
